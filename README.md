@@ -1,2 +1,2 @@
 # ms-thesis
-My Master's thesis
+Master's Thesis
