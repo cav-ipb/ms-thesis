@@ -429,16 +429,16 @@ colección de información que puede ser:
     sistemas computacionales interconectados.
 \end{itemize}
 
-Hasta 1980 el principal enfoque hacia base de datos descentralizadas eran las
+Hasta 1980 el principal enfoque hacia las bases de datos descentralizadas eran las
 \textit{bases de datos distribuidas} \cite{mcleod1980federated}. En este enfoque se define un esquema lógico
-único que describe los datos en cada una de las bases de datos que conforman el sistema distribuido. Mientras que la implementación
+único, que describe los datos en cada una de las bases de datos que conforman el sistema, mientras que la implementación
 física de la base de datos se distribuye entre las computadoras de una red. Sin embargo,
 la centralización lógica característica de este enfoque presenta muchos problemas prácticos, como la
 imposibilidad de optimizar el almacenamiento de datos para cada nodo de la red y la vulnerabilidad del sistema frente a fallos en alguna de las computadoras.
 
 
 Motivados por las limitaciones de las bases de datos distribuidas, McLeod y Heimbigner \cite{mcleod1980federated} propusieron, en 1980, una nueva
-arquitectura de base de datos descentralizada que no solo permitiera la distribución física de los datos, sino también
+arquitectura que no solo permitiera la distribución física de los datos, sino también
 la descentralización lógica de sus componentes. Esta arquitectura se denominó \textit{base de datos federada}, la cual:
 
 \begin{itemize}
@@ -451,15 +451,15 @@ la descentralización lógica de sus componentes. Esta arquitectura se denominó
     entre los componentes, funcionando como interfaz para la comunicación entre estos.
 \end{itemize}
 
-La primera solución computacional para la integración de datos fue Multibase \cite{smith1981multibase} descrito como \textit{``un sistema de software
-diseñado para la integración de bases de datos distribuidas heterogéneas preexistentes''} que responde a la necesidad
+La primera solución computacional para la integración de datos fue Multibase \cite{smith1981multibase} descrito en 1981 como \textit{``un sistema de software
+diseñado para la integración de bases de datos distribuidas heterogéneas preexistentes''}. De acuerdo a sus autores, este sistema respondía a la necesidad
 de ``\textit{una base de datos integrada descrita por un esquema único, a partir del cual se expresan todos los accesos a los datos que son
 procesados en las unidades lógicas independientes}''.
 % 1980 - 1989
 
     Entre los años 1984 y 2000, los esfuerzos se centraron en la integración de bases de datos relacionales, las cuales
     se encontraban en pleno auge.  
-    En este contexto múltiples autores conceptualizaron el problema como
+    En este contexto, múltiples autores conceptualizaron el problema como
     la generalización de los esquemas locales mediante la creación de un esquema global que los unificara y controlara el acceso a estos.
         \begin{itemize}
             \item 
@@ -479,7 +479,7 @@ procesados en las unidades lógicas independientes}''.
         \end{itemize}
 
 Por otro lado, durante este mismo periodo varios autores empezaron a generalizar el concepto
-al abstraerse de la tecnología detrás de las fuentes de datos y enfocándose en los propios datos y su
+al abstraerse de la tecnología detrás de las fuentes de datos para enfocarse en los propios datos y su
 semántica.
 \begin{itemize}
     \item \textit{``La integración de datos asegura que los datos tengan el mismo significado y utilidad para los usuarios a través del tiempo, haciendo que los datos en distintos sistemas o bases de datos sean consistentes o logicamente compatibles.''} Martin, J. (1986) \cite{martin1986information}.
@@ -494,11 +494,14 @@ semántica.
 
 Durante la expansión de los servicios web en la década del 2000 se acrecentó el interés por la integración
 de datos semiestructuradas y no estructurados, debido al surgimiento de nuevos formatos de transmisión
-de datos como XML \cite{bourret1999xml}. Además, surge un nuevo enfoque de integración, planteando asegurar la interoperabilidad
-de sistemas de información mediante la implementación de las nuevas interfaces de comunicación ofrecidas por los servicios web como SOAP, WSDL y UDDI \cite{curbera2002soap}.
+de datos como XML \cite{bourret1999xml}. Además, surge un nuevo enfoque de integración \cite{miller2018open}, planteando
+que no es necesario establecer un control centralizado o federado, sino 
+que se debe asegurar el \textit{intercambio de datos}
+entre los sistemas de información. La interoperabilidad entre los miembros
+del sistema distribuido se define mediante el establecimiento de mapeos entre sus esquemas y la implementación de las nuevas interfaces de comunicación ofrecidas por los servicios web como SOAP, WSDL y UDDI \cite{curbera2002soap}.
 
 \begin{itemize}
-    \item \textit{``Al proveer interfaces estándares, los servicios web puede ser considerados como un paradigma de 
+    \item \textit{``Al proveer interfaces estándares, los servicios web pueden ser considerados como un paradigma de 
     programación para extraer e integrar datos a partir de sistemas de información heterogéneos''} Hansen et al. (2002) \cite{hansen2002data}.
     
     \item \textit{``La integración de datos es un desafío enfrentado por las aplicaciones que necesitan
@@ -510,7 +513,8 @@ de sistemas de información mediante la implementación de las nuevas interfaces
 \end{itemize}
 
 A partir de 2010 y hasta la fecha los aportes a la definición de la integración de datos se han
-centrado en la integración de \textit{Big Data}, \textit{Open Data} e integración dinámica.
+centrado en la integración de \textit{Big Data}, la utilización de \textit{FAIR/O Data} e integración dinámica.
+
 Dong y Srivastava (2013) \cite{dong2013big} señalaron que la integración de Big Data difiere de la integración
 de datos tradicional en diferentes aspectos:
     \begin{itemize}
@@ -519,35 +523,38 @@ de datos tradicional en diferentes aspectos:
         publicados de forma constante''}
         \item \textit{``las fuentes de datos son extremadamente heterogéneas en su estructura''}
     \end{itemize}
-Por otro lado, Miller, R. (2018) \cite{miller2018open} propone que gracias al surgimiento de \textit{Open Data} la integración de datos
-puede hacerse de forma dinámica durante el proceso de análisis de datos. ``La integración de datos es guiada
-por las necesidades del análisis de datos y por tanto, el descubrimiento de datos es realizado para facilitar este análisis.
+
+Por otro lado, Miller, R. (2018) \cite{miller2018open} destaca la importancia de \textit{FAIR/O Data}, una iniciativa
+para mejorar la automatización de la integración de datos bajo los principios de:
+
+\begin{itemize}
+    \item \textbf{Findable (F)}: Los metadatos y los datos deben ser fáciles de encontrar tanto para humanos como para computadoras. 
+    \item \textbf{Accessible (A)}: Una vez que el usuario encuentra los datos requeridos, necesita saber cómo puede acceder a ellos, posiblemente incluyendo autenticación y autorización.
+    \item \textbf{Interoperable (I)}: Los datos generalmente necesitan integrarse con otros datos. Además, los datos deben interoperar con aplicaciones o flujos de trabajo para análisis, almacenamiento y procesamiento.
+    \item \textbf{Reusable (R)}: El objetivo final de FAIR es optimizar la reutilización de los datos. Para lograr esto, los metadatos y los datos deben estar bien descritos para que puedan ser replicados y/o combinados en diferentes contextos.
+    \item \textbf{Open Access (O)}: Los datos abiertos son datos que están accesibles, explotables, editables y compartibles libremente por cualquier persona para cualquier propósito. Generalmente, los datos abiertos están licenciados bajo una licencia abierta.
+\end{itemize}
+
+
+Además propone que gracias a este paradigma, la integración puede hacerse de forma dinámica durante el proceso de análisis de datos. 
+Señalando que \textit{``La integración de datos debe ser guiada
+por las necesidades del análisis de datos y por tanto, el descubrimiento de datos es realizado de forma automática para facilitar este análisis.
 El análisis de datos requiere el descubrimiento de joins, uniones y agregaciones existentes en los datos de forma
-precisa. Un nuevo enfoque llamado descubrimiento de datos orientado a consultas''.
+precisa. Este nuevo enfoque lo denominamos descubrimiento de datos orientado a consultas''.}
 
 Las definiciones analizadas pueden ser agrupadas en tres corrientes principales influidas
 por el contexto histórico y tecnológico:
 \begin{itemize}
     \item \textbf{Federación de datos} (1980s y 1990s) conceptualizaban el problema como la creación de una base de datos
     física centralizada con un esquema unificado.
-    \item \textbf{Intercambio de datos} (2000s y 2010s): conceptualizaban el problema como el establecimiento de mecanismo
+    \item \textbf{Intercambio de datos} (2000s): conceptualizaban el problema como el establecimiento de mecanismo
     de comunicación y compartición de datos entre disintos sistemas de información.
-    \item \textbf{Orientación a consultas} (2020s): conceptualizan el problema como el proceso de búsqueda e integración
-    dinámica de los resultados de consultas obtenidos de un conjunto dinámico de fuentes de datos.
+    \item \textbf{Orientación a consultas} (2010s y 2020s): conceptualizan el problema como el proceso de búsqueda e integración
+    dinámica de los resultados de consultas obtenidos a partir de un conjunto dinámico de fuentes de datos.
 \end{itemize}
+
 La figura \ref{fig:data-integration-timeline} presenta una breve resumen de la evolución histórica de las corrientes
-conceptuales de la integración de datos.
-
-
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{Images/data-integration-timeline.png}
-    \caption{Evolución conceptual de la integración de datos}
-    \label{fig:data-integration-timeline}
-\end{figure}
-
-
-A pesar de las visibles diferencias, se pueden identificar elementos clave comunes en estas definiciones, estos son:
+conceptuales de la integración de datos. A pesar de las notables diferencias entre las corrientes, se pueden identificar elementos clave comunes en estas definiciones, estos son:
 
 \begin{itemize}
     \item \textbf{Consultas}: El objetivo principal de la integración de datos es permitir la ejecución de consultas sobre varios
@@ -567,202 +574,202 @@ A pesar de las visibles diferencias, se pueden identificar elementos clave comun
     formatos en cualquier momento sin necesidad de notificar a una entidad administrativa.
 \end{itemize}
 
-\subsection{Limitaciones de la integración de datos}
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=\textwidth]{Images/data-integration-timeline.png}
+    \caption{Evolución conceptual de la integración de datos}
+    \label{fig:data-integration-timeline}
+\end{figure}
 
-    Para abordar de manera efectiva los desafíos que plantea la integración de datos, es fundamental analizar las causas subyacentes que contribuyen a la complejidad de esta tarea. Las limitaciones en la integración de datos son una consecuencia directa de las características intrínsecas de las bases de datos descentralizadas, siendo las más relevantes la heterogeneidad y la autonomía.
+\subsection{Limitaciones de la integración de datos}\label{section:data-integration-limitations}
 
-
-
+    Para abordar de manera efectiva los desafíos que plantea la integración de datos, 
+    es fundamental analizar las causas subyacentes que contribuyen a la complejidad de esta tarea. 
+    Las limitaciones en la integración de datos son una consecuencia directa de las características 
+    intrínsecas de las bases de datos descentralizadas, siendo las más relevantes la heterogeneidad y la autonomía.
 
     \subsubsection{Limitaciones de infraestructura}
 
-    Las limitaciones de infraestructura se evidencian al intentar que diferentes sistemas, a menudo heterogéneos en términos de tecnología, arquitectura y protocolos, puedan comunicarse de manera consistente. 
-    Estas limitaciones suelen estar relacionadas con la falta de interoperabilidad entre plataformas, la diversidad en los modelos de datos, y las discrepancias en los mecanismos de comunicación utilizados por las distintas aplicaciones o sistemas.
-    Además, estas dificultades se ven agravadas por la obsolescencia de infraestructuras heredadas (legacy systems), 
-    que no fueron diseñadas para integrarse fácilmente con tecnologías más modernas. 
+        Las limitaciones de infraestructura se evidencian al intentar que diferentes sistemas, a menudo heterogéneos en términos de tecnología, arquitectura y protocolos, puedan comunicarse de manera consistente. 
+        Estas limitaciones suelen estar relacionadas con la falta de interoperabilidad entre plataformas, la diversidad en los modelos de datos, y las discrepancias en los mecanismos de comunicación utilizados por las distintas aplicaciones o sistemas.
+        Además, estas dificultades se ven agravadas por la obsolescencia de infraestructuras heredadas (\textit{legacy systems}), 
+        que no fueron diseñadas para integrarse fácilmente con tecnologías más modernas. 
     
-    % La necesidad de establecer conexiones fiables, mantener la coherencia de los datos en tiempo real y minimizar los riesgos de pérdida o corrupción de la información son factores clave que demandan soluciones avanzadas, como el uso de middleware, APIs robustas, y arquitecturas orientadas a servicios (SOA) o basadas en microservicios.
-    % Superar estas limitaciones requiere no solo inversiones en infraestructura tecnológica, sino también la implementación de estrategias de gobernanza de datos, capacitación del personal, y la adopción de herramientas y metodologías que faciliten la integración, como ETL (Extract, Transform, Load), plataformas de integración como servicio (iPaaS) y estándares de interoperabilidad.
+        A continuación, se presenta un resumen de los principales obstáculos identificados y analizados en la literatura científica \cite{mcleod1980federated, reddy1994methodology, doan2012principles}.
 
-    A continuación, se presenta un resumen de los principales obstáculos identificados y analizados en la literatura científica \cite{mcleod1980federated, reddy1994methodology, doan2012principles}.
+        \begin{itemize}
+            \item \textbf{Interfaces de comunicación}: Los diferentes tipos de sistemas emplean distintos mecanismos de comunicación. 
+            Por ejemplo, los sistemas de bases de datos suelen utilizar protocolos propietarios basados en TCP/IP \cite{eddy2022tcp}, lo que requiere el uso de conectores específicos (\textit{drivers}) \cite{bai2022jdbc} para cada uno de ellos.
+            Los servicios web generalmente emplean APIs REST basadas en HTTP \cite{bishop2022http} para la transferencia de datos, mientras que servidores de archivos pueden utilizar protocolos como FTP \cite{rfc4217ftp}. Por tanto, un sistema
+            integrador requiere de la implementación de distintos tipos de conectores de acuerdo a los protocolos de comunicación de las distintas fuentes y los lenguajes de programación utilizados.
+            
+            \item \textbf{Modelo de datos}: La diferencia entre modelos de datos se puede traducir en una diferencia a nivel
+            de estructura de datos, restricciones de integridad u operaciones. Por ejemplo, en el modelo relacional la única forma
+            de representar una interrelación es utilizando una llave foránea, sin embargo, en modelos orientados a documentos una
+            interrelación puede ser representada embebiendo directamente dentro
+            del documento principal los documentos relacionados \cite{mongodb2024embedding}. Estas diferencias provocan que se deban no solo realizar cambios en la
+            sintaxis de las consultas sino también en la lógica de acceso a los datos.
 
-    \begin{itemize}
-        \item \textbf{Interfaces de comunicación}: Los diferentes tipos de sistemas emplean distintos mecanismos de comunicación. 
-        Por ejemplo, los sistemas de bases de datos suelen utilizar protocolos propietarios basados en TCP/IP \cite{eddy2022tcp}, lo que requiere el uso de conectores específicos (\textit{drivers}) para cada uno de ellos.
-        Los servicios web generalmente emplean APIs REST basadas en HTTP \cite{bishop2022http} para la transferencia de datos, mientras que servidores de archivos pueden utilizar protocolos como FTP \cite{rfc4217ftp}. Por tanto, un sistema
-        integrador requiere de la implementación de distintos tipos de conectores de acuerdo a los protocolos de comunicación de las distintas fuentes.
-        
-        \item \textbf{Modelo de datos}: La diferencia entre modelos de datos se puede traducir en una diferencia a nivel
-        de estructura de datos, restricciones de integridad u operaciones. Por ejemplo, en el modelo relacional la única forma
-        de representar una interrelación es utilizando una llave foránea, sin embargo, en modelos orientados a documentos una
-        interrelación puede ser representada mediante llaves foráneas o embebiendo los documentos relacionados directamente dentro
-        del documento principal \cite{mongodb2024embedding}. Estas diferencias provocan que se deban no solo realizar cambios en la
-        sintaxis de las consultas sino también en la lógica de acceso a los datos.
+            \item \textbf{Lenguajes de consulta}: Incluso entre sistemas gestores de bases de datos que utilizan el mismo modelo
+            de datos existen diferencias entre los lenguajes de consulta de cada uno. Por ejemplo, a pesar de la existencia
+            del estándar SQL diferentes sistemas gestores comerciales como Oracle, PostgreSQL, MySQL y SQLServer han realizado
+            distintas implementaciones de SQL. Por tanto, se requiere de una traducción de las consultas del usuario a distintos lenguajes.
 
-        \item \textbf{Lenguajes de consulta}: Incluso entre sistemas gestores de bases de datos que utilizan el mismo modelo
-        de datos existen diferencias entre sus lenguajes de consulta de cada uno. Por ejemplo, a pesar de la existencia
-        del estándar SQL diferentes sistemas gestores comerciales como Oracle, PostgreSQL, MySQL y SQLServer han realizado
-        distintas implementaciones de SQL. Por tanto, se requiere de una traducción a distintos lenguajes de las consultas para
-        la integración de datos.
+            \item \textbf{Sistemas heredados}: Incluso dentro de un mismo sistema, el paso del tiempo puede generar incompatibilidades 
+            como resultado de actualizaciones, cambios en los estándares o en los protocolos de comunicación, 
+            así como modificaciones en las estructuras de datos y en las interfaces de programación.
+            Además, el soporte limitado, la falta de cortafuegos y protocolos de cifrado, así como la incompatibilidad con las 
+            herramientas de seguridad modernas, hacen que los sistemas heredados sean vulnerables a ataques cibernéticos.
+        \end{itemize}
 
-        \item \textbf{Sistemas heredados}: Incluso dentro de un mismo sistema, el paso del tiempo puede generar incompatibilidades 
-        como resultado de actualizaciones, cambios en los estándares o en los protocolos de comunicación, 
-        así como modificaciones en las estructuras de datos y en las interfaces de programación.
-        Además, el soporte limitado, la falta de cortafuegos y protocolos de cifrado, así como la incompatibilidad con las 
-        herramientas de seguridad modernas, hacen que los sistemas heredados sean vulnerables a ataques cibernéticos.
-    \end{itemize}
-
-    % An enterprise may have multiple DBMSs.  Different organizations within the enterprise may have different requirements and  may select different DBMSs. DBMSs  purchased over a period of time may be  different due to changes in technology. Heterogeneities due to differences in DBMSs  result from differences in data models and  differences at the system level. These are  described below. Each DBMS has an underlying data model used to define data  structures and constraints. Both representation (structure and constraints) and language aspects can lead to heterogeneity.  l Differences in structure: Different  data models provide different structural  primitives [e.g., the information modeled  using a relation (table) in the relational  model may be modeled as a record type  in the CODASYL model]. If the two representations have the same information  content, it is easier to deal with the differences in the structures. For example,  address can be represented as an entity  in one schema and as a composite attribute in another schema. If the information content is not the same, it may be  very difficult to deal with the difference.  As another example, some data models  (notably semantic and object-oriented  models) support generalization (and  property inheritance) whereas others do  not.  l Differences in constraints: Two data  models may support different constraints. For example, the set type in a  CODASYL schema may be partially  modeled as a referential integrity constraint in a relational schema. CODASYL, however, supports insertion and  retention constraints that are not captured by the referential integrity constraint alone. Triggers (or some other  mechanism) must be used in relational  systems to capture such semantics.  l Differences in query languages:  Different languages are used to manipulate data represented in different data  models. Even when two DBMSs support  the same data model, differences in their  query languages (e.g., QUEL and SQL)  or different versions of SQL supported  by two relational DBMSs could contribute to heterogeneity. system aspects of the  DBMSs also lead to heterogeneity. \cite{mcleod1980federated}
-
-    % Data retrieved from two local databases for the same logical data item may be incompatible for the following reasons:  * Different Levels of Accuracy: Different databases may be storing an attribute at dissimilar levels of accuracy. For example, one database may contain the weight of a particular part up to an accuracy of a milligram, whereas another database may specify accuracy only up to a gram [43]. * Asyncronous Updates: Since each database is managed independently, all databases may not update the value simultaneously [481. * Lack of Security: Due to lack of information security at component databases, unauthorized users may have changed the data [491. \cite{reddy1994methodology}
 
     \subsubsection{Limitaciones l\'ogicas}
 
-    La individualidad es una característica intrínseca de la naturaleza humana,
-    como consecuencia distintos grupos de usuarios o diseñadores pueden interpretar y
-    abordar los requerimientos de un sistema de información desde distintas perspectivas y enfoques \cite{doan2012principles, halevy2006data}. Por tanto, cuando se integran
-    múltiples fuentes de datos la representación de los datos en cada una puede ser muy distinta.
-    Estas diferencias en la representación son agrupadas bajo el concepto de \textit{``heterogeneidad lógica''}, la cual se divide en dos categorías principales
-    de problemas \cite{hakimpour2001resolving}. A continuación, se presenta un resumen de los principales obstáculos identificados y analizados en la literatura científica \cite{Batini1986, breitbart1986database, breitbart1990multidatabase, reddy1994methodology, halevy2006data, hakimpour2001resolving}.
+        La individualidad es una característica intrínseca de la naturaleza humana,
+        como consecuencia distintos grupos de usuarios o diseñadores pueden interpretar y
+        abordar los requerimientos de un sistema de información desde distintas perspectivas y enfoques \cite{doan2012principles, halevy2006data}. Por tanto, cuando se integran
+        múltiples fuentes de datos la representación de los datos en cada una puede ser muy distinta.
+        Estas diferencias en la representación son agrupadas bajo el concepto de \textit{``heterogeneidad lógica''}, la cual se divide en dos categorías principales
+        de problemas \cite{hakimpour2001resolving}. A continuación, se presenta un resumen de los principales obstáculos identificados y analizados en la literatura científica \cite{Batini1986, breitbart1986database, breitbart1990multidatabase, reddy1994methodology, halevy2006data, hakimpour2001resolving}.
 
-    La \textit{``heterogeneidad de datos''} se refiere a diferencias en la implementación de definiciones semánticamente equivalentes entre distintas fuentes de datos. 
+        La \textit{``heterogeneidad de datos''} se refiere a diferencias en la implementación de definiciones semánticamente equivalentes entre distintas fuentes de datos. 
 
-    \begin{itemize}
-        \item \textbf{Tipo de dato}: Ocurre cuando datos idénticos, desde un punto de vista semántico, se representan
-        utilizando diferentes tipos de datos. Por ejemplo, una fecha puede expresarse mediante una cadena de texto siguiendo
-        el estándar ISO 8601 \cite{iso8601}, como \texttt{``2024-12-16''}, 
-        mediante un valor entero siguiendo estándar del tiempo de Unix \cite{unix_time_wiki} (representando el número de segundos desde el 1 de enero de 1970), o mediante un objeto específico para la gestión de fechas.
-        \item \textbf{Precisión}: Esta incompatibilidad surge cuando el mismo atributo de una entidad es almacenado utilizando 
-        diferentes unidades de medida o niveles de precisión, como el número de lugares decimales o el número de componentes en la hora. Por ejemplo, un atributo \texttt{longitud}
-        puede ser representado en una base de datos en centímetros (cm), mientras que en otra base de datos el mismo atributo se almacena en milímetros (mm).
-        \item \textbf{Formato}: Algunos conceptos pueden representarse utilizando diferentes formatos. Un ejemplo claro es el caso de la hora. 
-        El estándar ISO 8601 establece múltiples formatos válidos para representar horas, permitiendo diversas configuraciones incluso al mismo nivel
-        de precisón (\texttt{``21:47:55Z''} y \texttt{``T214755Z''}).
-    \end{itemize}
+        \begin{itemize}
+            \item \textbf{Tipo de dato}: Ocurre cuando datos idénticos, desde un punto de vista semántico, se representan
+            utilizando diferentes tipos de datos. En particular, una fecha puede expresarse mediante una cadena de texto siguiendo
+            el estándar ISO 8601 \cite{iso8601}, como \texttt{``2024-12-16''} o 
+            mediante un valor entero siguiendo el estándar del tiempo de Unix \cite{unix_time_wiki} (representando el número de segundos desde el 1 de enero de 1970).
+            \item \textbf{Precisión}: Esta incompatibilidad surge cuando el mismo atributo de una entidad es almacenado utilizando 
+            diferentes unidades de medida o niveles de precisión, como el número de lugares decimales o el número de componentes en la hora. Por ejemplo, un atributo \texttt{longitud}
+            puede ser representado en una base de datos en centímetros (cm), mientras que en otra base de datos el mismo atributo se almacene en milímetros (mm).
+            \item \textbf{Formato}: Algunos conceptos pueden representarse utilizando diferentes formatos del mismo tipo de dato, como es el caso de la hora. 
+            El estándar ISO 8601 establece múltiples formatos válidos para representar horas, permitiendo diversas configuraciones incluso al mismo nivel
+            de precisón (\texttt{``21:47:55Z''} y \texttt{``T214755Z''}).
+        \end{itemize}
 
-    La ``heterogeneidad semántica'' se refiere a diferencias o similaridades en el significado de las definiciones del esquema.
+        La ``heterogeneidad semántica'' se refiere a diferencias o similaridades en el significado de las definiciones del esquema.
 
-    \begin{itemize}
-        \item \textbf{Conflictos de nombre}: Los esquemas en distintos modelos de datos utilizan nombres para describir los conjuntos
-        de entidades y sus atributos. Sin embargo, las profesionales de diferentes áreas, incluso dentro de una misma organización, pueden emplear
-        terminologías completamente distintas debido a la existencia de acrónimos y
-        términos sinónimos. Por tanto, es necesario resolver
-        los conflictos que ocurren cuando conceptos semánticamente equivalentes son nombrados de manera
-        diferente o cuando conceptos semánticamente distintos reciben el mismo nombre.
-        \item \textbf{Conflictos de llave}: En distintos esquemas de datos pueden asignarse diferentes llaves a un mismo concepto. Por ejemplo, para
-        el conjunto de entidades \texttt{Cliente}, atributos como \texttt{CI} (Carné de identidad) o \texttt{Email} pueden ser utilizados como llave
-        en fuentes de datos distintas.
-        \item \textbf{Conflictos de interrelación}: La cardinalidad o el grado de una misma interrelación varía en diferentes fuentes de datos. 
-        Por ejemplo, una interrelación entre \texttt{Clientes} y \texttt{Pedidos} puede tener una cardinalidad diferente en dos fuentes de datos. 
-        En una, esta relación puede ser de uno a muchos (1:m) (un cliente puede realizar múltiples pedidos, el pedido está asociado a un único cliente), 
-        mientras que en otra base de datos, la misma interrelación podría tener una cardinalidad de 
-        muchos a muchos (m:m) (un cliente puede realizar varios pedidos y cada pedido puede estar vinculado a múltiples clientes).
-        \item \textbf{Atributos faltantes}: Un mismo concepto puede ser representado mediante diferentes atributos, dependiendo de los intereses y objetivos de las organizaciones que diseñan su esquema de datos. 
-        Las distintas organizaciones pueden priorizar diferentes aspectos o medidas del concepto, lo que lleva a la creación de atributos específicos que varían en términos de definición o granularidad. 
-        Por ejemplo, un concepto como \texttt{precio} puede ser representado por un atributo que incluye solo el valor numérico, o puede desglosarse en atributos adicionales como \texttt{precio base}, \texttt{impuestos} y \texttt{descuentos},
-        dependiendo de las necesidades de cada organización.
-    \end{itemize}
-
-
-    % In the design process, different user groups  or designers adopt their own viewpoints in  modeling the same objects in the application domain.
-
-
-
-    % It quickly became clear that one of the major bottlenecks in setting up a data integration application is the effort required to create the source descriptions, and more specifically, writing the semantic mappings between the sources and the mediated schema. Writing such mappings (and maintaining them) required database expertise (to express them in a formal language) and business knowledge (to understand the meaning of the schemas being mapped). \cite{halevy2006data}
-    % The work on automated schema mapping was based on the following foundations. First, the research explored techniques to map between schemas based on clues that can be obtained from the schemas themselves, such as linguistic similarities between schema elements and overlaps in data values or data types of columns. Second, based on the observation that none of the above techniques is foolproof, the next development involved systems that combined a set of individual techniques to create mappings [31, 32]. Finally, one of the key observations was that schema mapping tasks are often repetitive. For example, in data integration we map multiple schemas in the same domain to the same mediated schema. Hence, we could use Machine Learning techniques that consider the manually created schema mappings as training data, and generalize from them to predict mappings between unseen schemas. As we describe in Section 4, these techniques are in commercial use today and are providing important benefits in the settings in which they are employed.
-
-    % We distinguish two types of heterogeneity here: data heterogeneity and semantic heterogeneity. 
-    % Data heterogeneity refers to differences among local definitions, such as attribute types, formats, or precision. These differences can be easily resolved.
-    %  Semantic heterogeneity refers to differences or similarities in the meaning of local data. For example, two schema elements in two local data sources can have the same intended meaning, but different names. 
-    %  Thus, during integration, it should be realized that these two elements actually refer to the same concept. 
-    %  Alternatively, two schema elements in two data sources might be named identically, while their intended meanings are incompatible. 
-    %  Hence, these elements should be treated as different things during integration. 
-    %  As a consequence, adequate and meaningful data integration relies on the detection of discrepancies and similarities between schema elements. 
-    %  Thus, semantics of data must be taken into account during integration. Semantics is the interpretation people attribute to data (i.e., relating data to what they represent) according to their understanding of the world. 
-    %  Different interpretations of data causes semantic heterogeneity. In the database domain, semantics refers to the meaning of schema elements (e.g., classes, attributes and methods). Often, it is used in contrast with syntax, by which we refer to the definition of the structure of schema elements. \cite{hakimpour2001resolving}
-
-
-    % In the heterogeneous environment one of the major problems in schema integration is to resolve data inconsistencies that may exist in different data sources for semantically identical data. The most significant problems of such nature are as follows.  1. resolution of naming conventions and naming conflicts that occur when semantically identical data items are named differently or semantically different data items are named identically.  2. resolution of data representation conflicts that occur when semantically identical data items are represented differently in different data sources (for example, data represented as a character string in one database maybe represented as a real number in the other database).  3. resolution of differences in data structures in different data sources.  4. resolution of data sealing conflicts that occur when semantically identical data items stored in different  databases using different units of measure.  5. resolution of missing or conflicting data values that occur when semantically identical data items may have some attribute values different or missing in some data  SOUrCeS. \cite{breitbart1990multidatabase}
-
-
-    % Type Conflicts. These arise when the  same concept is represented by different modeling constructs in different  schemas. This is the case when, for  example, a class of objects is represented as an entity in one schema and  as an attribute in another schema.  (2) Dependency Conflicts. These arise  when a group of concepts are related  among themselves with different dependencies in different schemas. For  example, the relationship Marriage between Man and Woman is 1: 1 in one  schema, but m : n in another accounting  for a marriage history.  (3) Key Conflicts. Different keys are assigned to the same concept in different  schemas. For example, SS and Empid may be the keys of Employee in two  component schemas.  (4) Behavioral Conflicts. These arise when  different insertion/deletion policies are  associated with the same class of objects in distinct schemas. For example,  in one schema a department may be  allowed to exist without employees,  whereas in another, deleting the last  employee associated with,a department  leads to the deletion of the department  itself. Note that these conflicts may  arise only when the data model allows  for the representation of behavioral  properties of objects. \cite{Batini1986}
-
-
-    % resolution of naming conflicts, which typically involves either semantically equivalent data items named differently in different databases, or semantically different data items which have the same name in different databases;  - resolution of data representation conflicts for the same data item in different databases. For example, well depth in the INQUIRE database could be defined as a character data type, while in the IMS database it is defined as real;  - resolution of data scaling conflicts, when the same data item is stored in different databases using different units of measure. For example, well depth in one database is measured in meters and in the other one in feet;  - resolution of data structure conflicts caused by using various data models by different DBMS's;  - resolution of data inconsistencies for the same data item residing in several databases. \cite{breitbart1986database}
-
-
-    % Semantic Incompatibilities  Naming Conflicts: In any data model, the schemata incorporate names for various entities/objects represented by them. Since these schemata are designed independently, the designer of each schema uses his or her own vocabulary to name these objects. Objects in different schemata representing the same real world concept may contain dissimilar names [1], [21, [141, [451, [71, [4] resulting in problems of two types: Homonyms: This inconsistency arises when the same name is used for two different concepts. For example, 'SALARY' may mean weekly salary in one database, and monthly salary in another.  - Synonyms: This type of naming conflict arises when the same concept is identified by two or more names. For example, the term 'DOMESTICCUSTOMER' in one database may refer to the same concept as the term 'BUYERS' in another database.  Note that homonyms and synonyms can only be detected by external specification. Type Conflicts: These conflicts arise when the same concept is represented by different coding constructs in different schemata [1]. For example, an object may be represented as an entity in one schema and as an attribute in another schema. Key Conflicts: Different keys may be assigned to the same concept in different schemata [15], [46]. For example, ss and EMP-ID may be keys for employees in two component schemata. * Behavioral Conflicts: These conflicts arise when different insertion/deletion policies are associated with the same class of objects in different schemata [151. For example, in one database, the relation DEPT may exist without having any employee records being associated with it, where as in another database, the deletion of the last employee record may also delete the relation DEPT from the database. * Missing Data: Different attributes may be defined for the same concept in different schemata [47]. For example, EMPI(SSN, NAME, AGE) and EMP2(SSN, NAME, ADDRESS) may represent the same concept in two database schemata. Attribute 'AGE' is missing in EMP2, and attribute 'ADDRESS' is missing in EMPI.  * Levels of Abstraction: This incompatibility is encountered when information about an entity is stored at dissimilar levels of detail in two databases [131. For example, 'LABOR-COST' and 'MATERIAL-COST' may be stored separately in one database and combined together as 'TOTAL-COST' in a second database.  * Identification of Related Concepts: For concepts in the component schemata that are not the same but are related, one needs to discover all the inter-schema properties that relate to them. For example, two entities belonging to two different databases may not be equivalent but one entity may be a generalization of the other entity. * Scaling Conflicts: This incompatibility arises when the same attribute of an entity is stored in dissimilar units in different databases [141. For example, the attribute 'LENGTH' of an entity may be stored in terms of centimeters in one database and as inches in another database. \cite{reddy1994methodology}
+        \begin{itemize}
+            \item \textbf{Conflictos de nombre}: Los esquemas en distintos modelos de datos utilizan nombres para describir los conjuntos
+            de entidades y sus atributos. Sin embargo, las profesionales de diferentes áreas, incluso dentro de una misma organización, pueden emplear
+            terminologías completamente distintas debido a la existencia de acrónimos y
+            términos sinónimos. Por tanto, es necesario resolver
+            los conflictos que ocurren cuando conceptos semánticamente equivalentes son nombrados de manera
+            diferente o cuando conceptos semánticamente distintos reciben el mismo nombre.
+            \item \textbf{Conflictos de llave}: En distintos esquemas de datos pueden asignarse diferentes llaves a un mismo concepto. Por ejemplo, para
+            el conjunto de entidades \texttt{Cliente}, atributos como \texttt{CI} (Carné de identidad) o \texttt{Email} pueden ser utilizados como llave
+            en fuentes de datos distintas.
+            \item \textbf{Conflictos de interrelación}: La cardinalidad o el grado de una misma interrelación varía en diferentes fuentes de datos. 
+            A modo de ilustración, supóngase una interrelación entre \texttt{Clientes} y \texttt{Pedidos} que tiene una cardinalidad diferente en dos fuentes de datos. 
+            En una, esta relación puede ser de uno a muchos (un cliente puede realizar múltiples pedidos, el pedido está asociado a un único cliente), 
+            mientras que en otra base de datos, la misma interrelación podría tener una cardinalidad de 
+            muchos a muchos (un cliente puede realizar varios pedidos y cada pedido puede estar vinculado a múltiples clientes).
+            \item \textbf{Atributos faltantes}: Un mismo concepto puede ser representado mediante diferentes atributos, dependiendo de los intereses y objetivos de la organización, lo que conduce a la creación de atributos específicos que varían en términos de definición o granularidad. 
+            Como caso concreto, el concepto \texttt{precio} puede ser representado por un atributo que incluye solo el valor numérico, o puede desglosarse en atributos adicionales como \texttt{precio base}, \texttt{impuestos} y \texttt{descuentos},
+            dependiendo de las necesidades de cada organización.
+        \end{itemize}
 
 
     \subsubsection{Limitaciones administrativas}
 
-    Si bien la autonomía de las fuentes de datos ofrece diversas ventajas, también conlleva una serie de consecuencias negativas, principalmente relacionadas con la necesidad de armonizar políticas organizacionales y establecer mecanismos efectivos de comunicación entre distintos equipos de personas \cite{miller2018open, mcleod1980federated}.
+        Si bien la autonomía de las fuentes de datos ofrece diversas ventajas, también conlleva una serie de consecuencias negativas, principalmente relacionadas con la necesidad de armonizar políticas organizacionales y establecer mecanismos efectivos de comunicación entre distintos equipos de personas \cites*{miller2018open, mcleod1980federated}.
+        A continuación, se presenta un resumen de los principales obstáculos identificados y analizados en la literatura científica.
 
-    \begin{itemize}
-        \item \textbf{Acceso}: El acceso a ciertos datos está condicionado por múltiples factores, que incluyen aspectos organizacionales, legales y contractuales. En primer lugar, las políticas internas de las organizaciones propietarias de las fuentes de datos suelen estar orientadas a mantener el control sobre sus activos de información. Esto significa que las organizaciones solo comparten sus datos con terceros bajo estrictas condiciones que aseguren la preservación de dicho control, como la implementación de acuerdos de confidencialidad, políticas de acceso restringido y mecanismos de trazabilidad.
-        En segundo lugar, existen regulaciones legales y normativas de protección de datos que imponen restricciones específicas sobre el acceso y uso de información personal. Ejemplos representativos incluyen el Reglamento General de Protección de Datos (GDPR) en la Unión Europea y la Ley de Portabilidad y Responsabilidad del Seguro Médico (HIPAA) en los Estados Unidos. Estas leyes limitan el tratamiento y la transferencia de datos personales, estableciendo principios como el consentimiento explícito del usuario, la minimización de datos y la necesidad de garantizar medidas de seguridad adecuadas. El incumplimiento de estas regulaciones puede acarrear sanciones legales severas, lo que obliga a las organizaciones a implementar mecanismos de cumplimiento que restringen el acceso a información sensible.
-        Finalmente, las licencias de uso de los datos representan otra barrera significativa en el acceso y la integración de fuentes de información. Dependiendo del tipo de licencia, pueden establecerse restricciones sobre la reutilización, modificación, distribución o explotación comercial de los datos. Por ejemplo, ciertas licencias abiertas, como Creative Commons, permiten un uso más flexible, mientras que licencias propietarias restringen su utilización a términos específicos acordados entre las partes.
-        \item \textbf{Comunicación}: Una fuente de datos puede llevar a cabo actualizaciones o modificaciones en su estructura, formato o protocolos de acceso que comprometan la interoperabilidad con otros sistemas dependientes. Estas actualizaciones pueden ser realizadas sin una adecuada comunicación o coordinación con los sistemas y aplicaciones que consumen los datos, lo que puede provocar una serie de problemas técnicos y operativos.
-    \end{itemize}
+        \begin{itemize}
+            \item \textbf{Acceso}: El acceso a ciertos datos está condicionado por múltiples factores, que incluyen aspectos organizacionales, legales y contractuales. 
+            En primer lugar, las políticas internas de las organizaciones propietarias de las fuentes de datos suelen estar orientadas a mantener el control sobre sus activos de información. Esto significa que las organizaciones solo comparten sus datos con terceros bajo estrictas condiciones que aseguren la preservación de dicho control, como la implementación de acuerdos de confidencialidad, políticas de acceso restringido y mecanismos de trazabilidad.
+            En segundo lugar, existen regulaciones legales y normativas de protección de datos que imponen restricciones específicas sobre el acceso y uso de información personal. 
+            Ejemplos representativos incluyen la \textit{General Data Protection Regulation} (GDPR) \cites*{gdpr, voigt2017eu} en la Unión Europea y la \textit{Health Insurance Portability and Accountability Act} (HIPAA) \cites*{hipaa,cohen2018hipaa} en los Estados Unidos. Estas leyes limitan el tratamiento y la transferencia de datos personales, estableciendo principios como el consentimiento explícito del usuario, la minimización de datos y la necesidad de garantizar medidas de seguridad adecuadas. El incumplimiento de estas regulaciones puede acarrear sanciones legales severas, lo que obliga a las organizaciones a implementar mecanismos de cumplimiento que restringen el acceso a información sensible.
+            Finalmente, las licencias de uso de los datos representan otra barrera significativa en el acceso y la integración de fuentes de información. 
+            Dependiendo del tipo de licencia, pueden establecerse restricciones sobre la reutilización, modificación, distribución o explotación comercial de los datos. Ciertas licencias abiertas, como Creative Commons \cite{creativecommons}, permiten un uso más flexible, mientras que licencias propietarias restringen su utilización a términos específicos acordados entre las partes.
+            \item \textbf{Comunicación}: Una fuente de datos puede llevar a cabo actualizaciones o modificaciones en su estructura, formato o protocolos de acceso que comprometan la interoperabilidad con otros sistemas dependientes. Estas actualizaciones pueden ser realizadas sin una adecuada comunicación o coordinación con los sistemas y aplicaciones que consumen los datos, lo que puede provocar una serie de problemas técnicos y de interoperabilidad.
+        \end{itemize}
 
 
 \subsection{Arquitecturas de sistemas de integraci\'on de datos}
 
-\subsubsection{Componentes de una arquitectura de integración de datos}
+    En la literatura se describen varias arquitecturas para la integración de datos, pero en términos generales, la mayoría de los sistemas se sitúan en algún punto entre la integración física y la integración virtual. 
+    En el extremo de integración física del espectro, los datos de las fuentes de datos individuales se cargan y materializan en un repositorio de datos físico, donde se puede responder a las consultas sobre los datos. 
+    En la integración virtual, los datos permanecen en las fuentes y se accede a ellos en el momento de la consulta. A pesar de las diferencias de enfoque, estas arquitecturas comparten muchos de los retos más difíciles
+    y por tanto componentes. 
 
-A partir del análisis de la literatura científica , se han identificado y recopilado los componentes fundamentales que constituyen las arquitecturas de integración de datos.
+    A partir del análisis de la literatura científica, se identificaron y recopilaron los componentes más comunes en las arquitecturas de integración de datos, para proveer al lector
+    del conocimiento necesario para el entendimiento de las arquitecturas descritas en el presente capítulo.
 
-\begin{itemize}
-    \item \textbf{Esquema mediador}: The mediated schema is built for the data integration application and contains only the aspects of the domain that are relevant to the application. As such, it does not necessarily contain all the attributes we see in the sources, but only a subset of them. In the virtual approach the mediated schema is not meant to store any data. It is purely a logical schema that is used for posing queries by the users (or applications) employing the data integration system.
-    \item \textbf{Fuentes de datos}: Data sources can vary on many dimensions, such as the data model underlying them and the kinds of queries they support. Examples of structured sources include database systems with SQL capabilities, XML databases with an XQuery interface, and sources behind Web forms that support a limited set of queries (corresponding to the valid combinations of inputs to its fields). In some cases, the source can be an actual application that is driven by a database, such as an accounting system. In such a case, a query to the data source may actually involve an application processing some data stored in the source.
-    \item \textbf{Decoradores}: and their role is to send queries to a data source, receive answers, and possibly apply some basic transformations on the answer. For example, a wrapper to a Web form source would accept a query and translate it into the appropriate HTTP request with a URL that poses the query on the source. When the answer comes back in the form of an HTML file, the wrapper would extract the tuples from the HTML file.
-    \item \textbf{Metadatos}: the glue that connects the mediated schema and the schemas of the sources. These descriptions specify the properties of the sources that the system needs to know in order to use their data.
-    \item \textbf{Mapeos semánticos}: which relate the schemata of the data sources to the mediated schema. The semantic mappings specify how attributes in the sources correspond to attributes in the mediated schema (when such correspondences exist), and how the different groupings of attributes into tables are resolved. In addition, the semantic mappings specify how to resolve differences in how data values are specified in different sources. It is important to emphasize that the virtual data integration architecture only requires specifying mappings between the data sources and the mediated schema and not between every pair of data sources. Hence, the number of mappings we specify is the same as the number of sources and not the square of that number.
-\end{itemize}
+    \begin{itemize}
+        \item \textbf{Fuentes de datos}: como fue expuesto en la sección \ref{section:data-integration-limitations} las fuentes de datos pueden variar en muchas dimensiones, como el modelo de datos subyacente y los tipos de consultas que admiten. 
+        En algunos casos, la fuente puede ser un sistema que administra una base de datos.
+        \item \textbf{Esquema mediador}: 
+        el esquema mediador se diseña para la aplicación de integración de datos y contiene sólo los aspectos del dominio que son relevantes para la aplicación. 
+        Por tanto, no necesariamente debe contener todos los atributos presentes en las fuentes, sino sólo un subconjunto de ellos. 
+        Particularmente, en el enfoque virtual, este esquema no está destinado a almacenar ningún dato, sino que se utiliza para traducir consultas, por parte de los usuarios (o aplicaciones) que emplean el sistema de integración de datos, en base a las fuentes de datos subyacentes.
+        \item \textbf{Decoradores}: su función es extraer la descripción (metadatos) de la fuente de datos, enviar consultas, recibir respuestas y, posiblemente, aplicar algunas transformaciones básicas a la respuesta.
+        \item \textbf{Metadatos}: son la base para conectar el esquema mediador y los esquemas de las fuentes. Estas descripciones especifican las propiedades de las fuentes que el sistema necesita conocer para utilizar sus datos.
+        \item \textbf{Mapeos semánticos}:  especifican la correspondencia entre los esquemas de las fuentes de datos y el esquema mediador, es decir, cómo se corresponden los atributos de las fuentes con los atributos del esquema mediado (cuando existen tales correspondencias), y cómo se resuelven las diferentes agrupaciones de atributos en tablas. 
+        Además, las correspondencias semánticas especifican cómo resolver las diferencias en la forma en que se especifican los valores de los datos en las distintas fuentes.
+    \end{itemize}
 
 \subsubsection{Arquitecturas de integración de datos física}
 
-\paragraph{Data warehouse\newline}
+    \paragraph{Data warehouse\newline}
 
-El término \textit{data warehouse} fue introducido a finales de la década de 1980 por los investigadores Barry Devlin y Paul Murphy en
-su propuesta de arquitectura para asegurar el flujo de datos hacia los ambientes de toma de decisión \cite{Devlin1988AnAF}. En 1992 Inmon \cite{inmon1992building} definió formalmente
-el data warehouse como \textit{``una colección de datos integrada, orientada a sujetos, variante en el tiempo y no volátil, utilizada como soporte para los procesos de toma de decisión''}.
-Por su parte, Raph Kimball propuso en 1996 que \textit{``Un data warehouse es un sistema que extrae, limpia, conforma y entrega los datos fuentes a un almacén de datos dimensional que soporta la ejecución de consultas y el análisis con el propósito de la toma de decisiones''} \cite{kimball1996data}.
+    El término \textit{data warehouse} fue introducido a finales de la década de 1980 por los investigadores Barry Devlin y Paul Murphy en
+    su propuesta de arquitectura para asegurar el flujo de datos hacia los ambientes de toma de decisión \cite{Devlin1988AnAF}. En 1992 Inmon \cite{inmon1992building} definió formalmente
+    el data warehouse como \textit{``una colección de datos integrada, orientada a sujetos, variante en el tiempo y no volátil, utilizada como soporte para los procesos de toma de decisión''}.
+    Por su parte, Raph Kimball propuso en 1996 que \textit{``Un data warehouse es un sistema que extrae, limpia, conforma y entrega los datos fuentes a un almacén de datos dimensional que soporta la ejecución de consultas y el análisis con el propósito de la toma de decisiones''} \cite{kimball1996data}.
 
-La architectura básica de un data warehouse se encuentra dividida en tres capas conceptuales \cite{kimball2013data,jameel2022analyses,nambiar2022overview} (véase figura \ref{fig:dw-architecture}):
+    La architectura básica de un data warehouse se encuentra dividida en tres capas conceptuales \cite{kimball2013data,jameel2022analyses,nambiar2022overview} (véase figura \ref{fig:dw-architecture}):
 
-\begin{itemize}
-    \item \textbf{Capa de datos en tiempo real}: Incluye las fuentes de datos estructurados, 
-    generalmente provenientes de sistemas transaccionales con distintos esquemas. 
-    Asimismo, contiene la llamada zona de preparación (\textit{staging zone}), 
-    donde los datos extraídos de estas fuentes se almacenan en su estado original 
-    para facilitar un procesamiento más eficiente.
-    \item \textbf{Capa de datos reconciliados}: 
-    En esta capa, los datos se integran en un esquema lógico global, 
-    diseñado siguiend los principios de normalización para garantizar la consistencia de la información. 
-    Posteriormente, los datos correspondientes a una rama específica del negocio se denormalizan 
-    y se almacenan en un data mart para su utilización.
-    Según Kimball, R. (2013) \textit{``un data mart presenta los datos producidos por un proceso del negocio''} \cite{kimball2013data}.
-Este sistema de almacenamiento 
-estructura e integra una pequeña parte de los datos,
-específica de una unidad del negocio (por ejemplo, un departamento),
-que la empresa almacena en un sistema de almacenamiento más grande.
-    \item \textbf{Capa de datos derivados}: Esta capa comprende los datos generados
-    a partir del procesamiento de los datos derivados utilizando diversas herramientas de extracción de conocimiento.
-\end{itemize}
+    \begin{enumerate}
+        \item \textbf{Capa de datos en tiempo real}: Incluye las fuentes de datos estructurados, 
+        generalmente provenientes de sistemas transaccionales con distintos esquemas. 
+        Asimismo, contiene la llamada zona de preparación (\textit{staging zone}), 
+        donde los datos extraídos de estas fuentes se almacenan en su estado original 
+        para facilitar un procesamiento más eficiente.
+        \item \textbf{Capa de datos reconciliados}: 
+        En esta capa, los datos se integran en un esquema lógico global, 
+        diseñado siguiendo los principios de normalización para garantizar la consistencia de la información. 
+        Posteriormente, los datos correspondientes a una rama específica del negocio se denormalizan 
+        y se almacenan en un \textit{data mart} para su utilización.
+        Según Kimball, R. (2013) \textit{``un data mart presenta los datos producidos por un proceso del negocio''} \cite{kimball2013data}.
+        Este sistema de almacenamiento 
+        estructura e integra una pequeña parte de los datos,
+        específica de una unidad del negocio, por ejemplo, un departamento.
+        \item \textbf{Capa de datos derivados}: Esta capa comprende los datos generados
+        a partir del procesamiento de los datos derivados utilizando diversas herramientas de extracción de conocimiento.
+    \end{enumerate}
 
-\begin{figure}[h!]
-    \centering
-    \includegraphics[width=\textwidth]{Images/dw-architecture.png}
-    \caption{Arquitectura básica de un \textit{data warehouse}}
-    \label{fig:dw-architecture}
-\end{figure}
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=\textwidth]{Images/dw-architecture.png}
+        \caption{Arquitectura básica de un \textit{data warehouse}}
+        \label{fig:dw-architecture}
+    \end{figure}
+
+    Los procesos de denormalización estan regidos por la teoría del diseño de bases de datos
+    multidimensionales \cite{kimball2013data}. En un \textit{esquema dimensional} se representa
+    un evento o sujeto en términos de \textit{hechos} y \textit{dimensiones}. 
+    Los datos se agrupa en hechos asociados con métricas que describen el comportamiento del evento y
+    las dimensiones permiten caracterizar los hechos y proporcionan el contexto de análisis. Se pueden distinguir
+    distintos tipos modelos dimensionales de acuerdo al grado de denormalización, que se describen a continuación
+    en orden ascendente de acuerdo al grado de denormalización.
+
+    \begin{itemize}
+        \item \textbf{Esquema de constelación} (\textit{Snowflake}): en este tipo de esquema se permite normalizar dimensiones en
+        subdimensiones para facilitar ciertos análisis en dependencia de la granularidad del problema. Por tanto pueden
+        existir interrelaciones no solo entre las tablas de hechos y tablas de dimensiones, sino también entre las propias tablas de dimensiones.
+        \item \textbf{Esquema de estrella} (\textit{Star}): en este tipo de esquema todas las dimensiones están denormalizadas, es decir
+        solo existen interrelaciones entre tablas de hechos y tablas de dimensiones. 
+        \item \textbf{Una gran tabla} (\textit{One Big Table}): en este tipo de esquema la mayoría de atributos dimensionales
+        se almacenan como columnas adicionales dentro de las propias tablas de hechos.
+    \end{itemize}
+
 
 
 \paragraph{Data lake\newline}
 
-El concepto de \textit{data lake} introducido por Dixon \cite{dixon2010lake} en 2010 como una solución a las limitaciones del \textit{data mart}, que a diferencia de este
-\'ultimo se considera como un sistema de almacenamiento para datos heterogéneos y no procesados obtenidos de múltiples fuentes.
+El concepto de \textit{data lake} introducido por Dixon \cite{dixon2010lake} en 2010 como una solución a las limitaciones del \textit{data mart}, que, a diferencia de este
+\'ultimo, se considera como un sistema de almacenamiento para datos heterogéneos y no procesados obtenidos de múltiples fuentes.
 
 La tecnología utilizada para la implementación de los primeros data lakes fue Apache Hadoop \cite{hadoop} que,
 gracias a la utilización del formato de almacenamiento de datos Apache Parquet \cite{parquet},
@@ -778,11 +785,11 @@ esta definición omite algunas de las características del almacenamiento de los
 \textit{``Un data lake es una vista lógica de todas las fuentes de datos o conjuntos de datos, en su formato original, accesibles solo a
 los cietíficos de datos y estadistas para realizar análisis''}, complementando esta definición con las siguientes características:
 \begin{itemize}
-    \item La calidad de los datos es asegurada utilizando metadatos
-    \item El acceso es controlado por herramientas de gobernación de políticas de datos
-    \item Su uso es limitado a científicos de datos y estadistas 
-    \item Integra todo tipo de datos en distintos formatos
-    \item Tiene un diseño lógico y físico
+    \item La calidad de los datos es asegurada utilizando metadatos.
+    \item El acceso es controlado por herramientas de gobernación de políticas de datos.
+    \item Su uso es limitado a científicos de datos y estadistas.
+    \item Integra todo tipo de datos en distintos formatos.
+    \item Tiene un diseño lógico y físico.
 \end{itemize}
 Este concepto limita los usuarios a solamente especialista de datos y carece de la noción de escalabilidad. Para
 solucionar estas carencias, Sawadomo y Darmont (2021) \cite{sawadogo2021data} proveyeron la siguiente
@@ -790,15 +797,15 @@ definicion \textit{``Un data lake es un sistema escalable de almacenamiento y an
 el cual es utilizado principalmente por especialistas de datos para la extracción de conocimiento''} y complementaron su definción con las siguientes
 características:
 \begin{itemize}
-    \item Contiene un catálogo de metadatos que asegura la calidad de datos
-    \item Utiliza herramientas de políticas de gobernación de datos
-    \item Es accesible a varios tipos de usuarios 
-    \item Integra cualquier tipo de datos en sus formatos originales
-    \item Tiene un diseño lógico y físico
-    \item Es escalable en términos de almacenamiento y procesamiento
+    \item Contiene un catálogo de metadatos que asegura la calidad de datos.
+    \item Utiliza herramientas de políticas de gobernación de datos.
+    \item Es accesible a varios tipos de usuarios.
+    \item Integra cualquier tipo de datos en sus formatos originales.
+    \item Tiene un diseño lógico y físico.
+    \item Es escalable en términos de almacenamiento y procesamiento.
 \end{itemize}
 
-Las revisiones [\cite*{giebler2019leveraging,ravat2019data}] de las arquitecturas de data lakes usualmente las agrupan en dos tipos: arquitectura de estanques y la arquitectura de zonas.
+Las revisiones [\cite*{giebler2019leveraging,ravat2019data}] de las arquitecturas de data lakes usualmente las agrupan en dos tipos: \textit{arquitectura de estanques} y la \textit{arquitectura de zonas}.
 
 La arquitectura de estanques fue diseñada por Inmon como un conjunto de estanques de datos \cite{inmon2016data}, donde cada estanque es una
 subdivisión del data lake que se encarga de un tipo de datos específico. De acuerdo a las especificaciones de Inmon, cada
@@ -811,13 +818,13 @@ relevantes para el tipo de datos. Esta arquitectura es usualmente compuesta por 
     correspondiente de acuerdo a su tipo. Este estanque es el único que no está asociado a ningún tipo de sistema de gestión de metadatos.
     \item \textbf{Estanque de datos analógicos}: los datos almacenados en este estanque se caracterizan por ser mediciones realizadas en altas frecuencias, es decir,
     mediciones generadas en gran volumen y a gran velocidad. Usualmente, se trata de datos semiestructuradas provenientes de dispositivos
-    que utilizan Internet de las cosas (IoT, por sus siglas en inglés).
+    que utilizan Internet de las Cosas (IoT, por sus siglas en inglés).
     \item \textbf{Estanque de datos de aplicación}: como su nombre indica estos datos provienen de aplicaciones de software y usualmente son datos
     estructurados provenientes de algún sistema gestor de bases de datos. Estos datos son integrados, transformados y preparados para posteriores
-    análisis, Inmon específicamente considera este estanque como un data warehouse.
+    análisis, en particular, Inmon considera este estanque como un data warehouse.
     \item \textbf{Estanque de datos textuales}: se encarga de almecenar datos no estructurados y texto.
     \item \textbf{Estanque de datos archivados}: almacena los datos que no son actualmente utilizados en los otros estanques, pero que pueden
-    ser requeridos en el futuro. Estos datos pueden ser originados desde los estanques de datos analógicos, de aplicación o de texto.
+    ser requeridos en el futuro. Estos datos pueden ser originarios de los estanques de datos analógicos, de aplicación o de texto.
 \end{enumerate}
 
 
@@ -842,6 +849,10 @@ la arquitectura utilizada por Zaloni \cite{sharma2018architecting} se compone de
     la configuración de seguridad y acceso.
 \end{enumerate}
 
+Este tipo de arquitecturas ha sido destacado para su utilización en procesamiento de Big Data con la
+\textit{arquitectura Lambda} \cite{kiran2015lambda} y la \textit{arquitectura de Data Mesh} \cite{machado2022data}.
+
+
 \begin{figure}[h!]
     \centering
     \includegraphics[width=\textwidth]{Images/zone-architecture.png}
@@ -859,8 +870,7 @@ un sistema de gestión de datos basado en un almacenamiento de bajo coste y dire
 que también proporciona las funcionalidades y rendimiento de SGBD analíticos, 
 como transacciones ACID, versionado de datos, auditoría, indexación, almacenamiento en caché y optimización de consultas. 
 De este modo, se combinan las principales ventajas de los data lakes y data warehouses: 
-el almacenamiento de bajo coste en un formato abierto accesible por diversos sistemas del primero, y las potentes funciones de gestión y optimización del segundo.
-''}
+el almacenamiento de bajo coste en un formato abierto accesible por diversos sistemas del primero, y las potentes funciones de gestión y optimización del segundo''}.
 
 La arquitectura de un data lakehouse (véase figura \ref{fig:dlh-architecture}) se compone de:
 
@@ -882,21 +892,22 @@ La arquitectura de un data lakehouse (véase figura \ref{fig:dlh-architecture}) 
     \label{fig:dlh-architecture}
 \end{figure}
 
-
-
+\paragraph{Análisis\newline}
+A modo de resumen de la presente subsección se presenta la tabla comparativa \ref{tab:di-physical-architectures} entre las
+arquitecturas presentadas anteriormente.
 
 \begin{longtable}{|p{3cm}|p{4cm}|p{4cm}|p{4cm}|}
     \hline
     \textbf{Criterio}         & \textbf{Data warehouse}                                   & \textbf{Data lake}                                                       & \textbf{Data lakehouse}                                                  \\ \hline
-    \endfirsthead
-    \hline
-    \textbf{Criterio}         & \textbf{Data warehouse}                                   & \textbf{Data lake}                                                       & \textbf{Data lakehouse}                                                  \\ \hline
-    \endhead
-    \hline
-    \multicolumn{4}{|r|}{Continúa en la siguiente página...} \\ \hline
-    \endfoot
-    \hline
-    \endlastfoot
+    % \endfirsthead
+    % \hline
+    % \textbf{Criterio}         & \textbf{Data warehouse}                                   & \textbf{Data lake}                                                       & \textbf{Data lakehouse}                                                  \\ \hline
+    % \endhead
+    % \hline
+    % \multicolumn{4}{|r|}{Continúa en la siguiente página...} \\ \hline
+    % \endfoot
+    
+    % \endlastfoot
     \textbf{Enfoque clave}    & Análisis de datos e inteligencia empresarial                & Exploración de datos, análisis de grandes datos y fuente única de verdad para diversos tipos de datos (e.g., registros, documentos, multimedia) & Combina análisis de datos estructurados con gestión transaccional            \\ \hline
     \textbf{Tipo de datos}    & Estructurados                                               & Estructurados, semi-estructurados y no estructurados                         & Estructurados, semi-estructurados y no estructurados                         \\ \hline
     \textbf{Costo de almacenamiento}            & Costoso y lento                                             & Económico, rápido y adaptable                                                & Económico, rápido y adaptable                                                \\ \hline
@@ -908,7 +919,8 @@ La arquitectura de un data lakehouse (véase figura \ref{fig:dlh-architecture}) 
     \textbf{Calidad}          & Alta                                                        & Riesgo de baja calidad (pantanos de datos) si no se gestiona correctamente   & Alta                                                                         \\ \hline
     \textbf{Gobernanza de datos} & Funciones integradas para calidad e integridad de datos   & Requiere herramientas adicionales para una gobernanza efectiva              & Enfoque híbrido, aprovecha las características del almacén de datos para una mejor gobernanza \\ \hline
     \textbf{Escalabilidad}    & Escalado vertical                                           & Escalado horizontal                                                          & Escalado horizontal                                                          \\ \hline
-    \end{longtable}
+    \caption{Comparación entre arquitecturas de integración de datos física}\label{tab:di-physical-architectures}
+\end{longtable}
 
 
 
@@ -922,23 +934,23 @@ El \textit{logical data warehouse} (LDW)
 es una arquitectura en la que se implementa una capa de virtualización de datos
 encima de sistemas de integración de datos o fuentes primarias de datos. Esto
 permite tanto el acceso a datos reconciliados como datos en tiempo real haciendo que
-estas fuentes se presenten al usuario como una única fuente de datos. Esto permite 
+estas fuentes se presenten al usuario como una única fuente de datos. Además, posibilita 
 consultar tanto las fuentes de datos convencionales (como bases de datos, almacenes de datos empresariales, lagos de datos, etc.) 
 como otras fuentes de datos (como aplicaciones, archivos de big data, servicios web y la nube) para satisfacer cualquier caso de uso analítico.
 
-Un LDW no almacena datos físicamente, sino que contiene metadatos que definen el contexto de los datos, lo que permite a los consumidores de datos encontrar y acceder a una pieza específica de datos sin necesidad de saber dónde está almacenada.
-Esto permite no utilizar procesos ETL o ELT físicos, es decir no se copian o mueven los datos a un almacenamiento
+Un LDW no almacena datos físicamente, sino que contiene metadatos que definen el contexto de los datos, permitiendo a los consumidores de datos encontrar y acceder a una pieza específica de datos sin necesidad de saber dónde está almacenada.
+Esto hace posible no utilizar procesos ETL o ELT físicos, es decir no se copian o mueven los datos a un almacenamiento
 centralizado. En este caso se utilizan los mapeos semánticos entre un esquema mediador global y los esquemas de las fuentes
 de datos para reformular las consultas del usuario y distribuirlas a las distintas fuentes.
 
 La arquitectura básica de un data warehouse lógico se compone de los siguientes componentes:
 
 \begin{itemize}
-    \item Capa de metadatos: Incluye el El esquema mediado se construye para la aplicación de integración de datos y contiene únicamente los aspectos del dominio que son relevantes para la aplicación. La clave para construir una aplicación de integración de datos son las descripciones de las fuentes, el vínculo que conecta el esquema mediado con los esquemas de las fuentes. Estas descripciones especifican las propiedades de las fuentes que el sistema necesita conocer para poder utilizar sus datos. El componente principal de las descripciones de las fuentes son los mapeos semánticos, que relacionan los esquemas de las fuentes de datos con el esquema mediado. Los mapeos semánticos especifican cómo los atributos de las fuentes corresponden a los atributos del esquema mediado (cuando existen tales correspondencias) y cómo se resuelven las diferentes agrupaciones de atributos en tablas.
-    \item Reformulador de consultas: Por lo tanto, el primer paso que debe realizar el sistema es reformular la consulta en consultas que se refieran a los esquemas de las fuentes de datos. Para ello, el sistema utiliza las descripciones de las fuentes. El resultado de la reformulación es un conjunto de consultas que hacen referencia a los esquemas de las fuentes de datos y cuya combinación producirá la respuesta a la consulta original.
-    \item Optimizador de consultas:  La optimización de consultas toma como entrada un plan de consulta lógico y produce un plan de consulta física, que especifica el orden exacto en que se acceden a las fuentes de datos, cuándo se combinan los resultados, qué algoritmos se utilizan para realizar operaciones sobre los datos (por ejemplo, uniones entre fuentes) y la cantidad de recursos asignados a cada operación.
-    \item Motor de ejecución: el motor de ejecución es responsable de la ejecución real del plan de consulta física. El motor de ejecución envía las consultas a las fuentes individuales a través de los envoltorios (wrappers) y combina los resultados según lo especificado por el plan de consulta.
-    \item Decoradores: su función es extraer los metadatos, enviar consultas a una fuente de datos, recibir las respuestas,
+    \item \textbf{Capa de metadatos}: Incluye el esquema mediador, los metadatos de las fuentes y los mapeos semánticos.
+    \item \textbf{Reformulador de consultas}: reformula la consulta del usuario en consultas que se refieran a los esquemas de las fuentes de datos, utilizando para ello las descripciones de las fuentes. El resultado de la reformulación es un conjunto de consultas que hacen referencia a los esquemas de las fuentes de datos y cuya combinación producirá la respuesta a la consulta original.
+    \item \textbf{Optimizador de consultas}:  la optimización de consultas toma como entrada un plan de consulta lógico y produce un plan de consulta físico, que especifica el orden exacto en que se acceden a las fuentes de datos, cuándo se combinan los resultados, qué algoritmos se utilizan para realizar operaciones sobre los datos y la cantidad de recursos asignados a cada operación.
+    \item \textbf{Motor de ejecución}: el motor de ejecución es responsable de la ejecución del plan de consulta físico. Envía las consultas a las fuentes individuales a través de los decoradores y combina los resultados según lo especificado por el plan de consulta.
+    \item \textbf{Decoradores}: su función es extraer los metadatos, enviar consultas a una fuente de datos, recibir las respuestas, y aplicar transformaciones básicas a los resultados.
     
 \end{itemize}
 
@@ -951,6 +963,9 @@ La arquitectura básica de un data warehouse lógico se compone de los siguiente
 
 \subsubsection{Integración física vs. integración virtual}
 
+Para concluir la presente sección se presenta una comparación entre los tipos de arquitecturas de integración
+expuestos anteriormente en la tabla \ref{tab:di-virtual-vs-physical-architectures}.
+
 \begin{longtable}{|p{3cm}|p{4.5cm}|p{4.5cm}|}
     \hline
     \textbf{Aspecto} & \textbf{Integración de Datos Física} & \textbf{Integración de Datos Virtual} \\
@@ -961,20 +976,15 @@ La arquitectura básica de un data warehouse lógico se compone de los siguiente
     \hline
     Rendimiento & Alto rendimiento para consultas complejas debido a la pre-optimización de datos. & El rendimiento depende de la capacidad de las fuentes y la eficiencia de las consultas distribuidas. \\
     \hline
-    Tiempo de implementación & Requiere tiempo considerable para la extracción, transformación y carga (ETL/ELT) de los datos. & Implementación más rápida, ya que no es necesario mover ni transformar los datos previamente. \\
-    \hline
     Actualización de datos & Los datos no están en tiempo real; las actualizaciones dependen de la frecuencia de los procesos ETL/ELT. & Los datos están siempre en tiempo real, ya que se accede directamente a las fuentes originales. \\
     \hline
     Escalabilidad & Requiere aumentar el almacenamiento y la capacidad de procesamiento a medida que crecen los datos. & Más escalable, ya que aprovecha el almacenamiento y procesamiento de las fuentes individuales. \\
     \hline
-    Complejidad de mantenimiento & Complejo; requiere mantenimiento de ETL/ELT, además de la gestión del repositorio central. & Más simple, ya que no se duplican los datos, pero puede ser complicado manejar múltiples fuentes heterogéneas. \\
-    \hline
     Consistencia de datos & Alta consistencia si los procesos ETL/ELT están bien diseñados. & Puede haber problemas de consistencia debido a diferencias entre las fuentes en tiempo real. \\
     \hline
-    Casos de uso & Ideal para análisis históricos, minería de datos, y reportes empresariales en grandes organizaciones. & Adecuado para consultas en tiempo real y aplicaciones que necesitan acceso inmediato a datos actualizados. \\
-    \hline
-    Costo inicial & Alto, debido al almacenamiento físico y la implementación de procesos ETL/ELT. & Menor costo inicial, pero requiere inversión en herramientas de virtualización y gestión de consultas. \\
-    \hline
+    Disponibilidad de datos & Alta, ya que se copian los datos de las fuentes al almacenamiento del sistema. & La disponibilidad depende de la confiabilidad de los sistemas que componen la solución, la caída de un componente afecta el acceso a datos.\\
+    \hline 
+    \caption{Comparación entre arquitecturas de integración de datos física}\label{tab:di-virtual-vs-physical-architectures}\\
     \end{longtable}
 
 
