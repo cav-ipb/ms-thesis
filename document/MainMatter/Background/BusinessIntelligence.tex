@@ -1,14 +1,113 @@
 \chapter{Fundamentos te\'orico-conceptuales}\label{chapter:bi-industry-4.0}
 
-\section{Evoluación de las bases de datos}
+\section{Evolución de las bases de datos}
+
+La información es un recurso estratégico producido en grandes volúmenes durante la era moderna, donde las bases de datos se han consolidado como una herramienta esencial para almacenar y recuperar información de manera eficiente.
+
+Aunque el término \textit{base de datos} fue formalmente introducido en el ámbito matemático y computacional durante la década de 1960, 
+la práctica de guardar y organizar datos ha sido una piedra angular en el desarrollo de la civilización humana, la ciencia y la tecnología. En épocas tempranas, este concepto se manifestaba a través de bibliotecas y archivos, que almacenaban grandes volúmenes de información en libros y documentos físicos. Estos sistemas tradicionales guardan una notable analogía con las bases de datos actuales, diferenciándose principalmente en que los datos ahora se gestionan en formato digital, lo que permite un acceso y manejo más ágil y versátil.
+
+La primera revolución de las bases de datos comenzó en la década de 1960, cuando el uso de computadoras se convirtió en una opción rentable para las organizaciones privadas.
+% El surgimiento de las computadoras electrónicas marcó la primera re- volución de las bases de datos. 
+El desarrollo de aplicaciones para la administración de datos 
+empezó a requerir establecer control sobre un conjunto propio de datos y 
+la implementación de código más sofisticado para satisfacer nuevos y más complejos requerimientos. 
+Así surge la idea de separar la lógica de gestión de los datos de la lógica de la aplicación, 
+que derivó en el desarrollo de los primeros Sistemas de Gestión de Bases de Datos (SGBD). Las bases
+de datos más populares de esta década, una basada en el modelo jerárquico llamada IMS \cite{hubbard1986ims} y una basada
+en un modelo de redes llamada CODASYL \cite{taylor1976codasyl}, forzaban a la definición de una estructura en los datos muy poco flexible y, 
+aunque dominaron el mercado de bases de datos hasta finales de los años 70’s, no tardaron en emerger sus desventajas e inconvenientes como la inflexibilidad e inexpresividad en la consultas \cite{harrison2015next}. 
+Además, eran muy difíciles de utilizar pues al carecer de una base teórica la forma de lograr la consistencia lógica era por medio de la programación.
+
+En 1970, Edgar F. Codd, un matemático y programador que trabajaba en las oficinas de IBM, publicó un
+artículo bajo el título \textit{``A Relational Model of Data for Large Shared Data Banks''} \cite{codd1970relational} en el que describe un tipo de bases de datos basadas
+en el nuevo modelo relacional, esta teoría marcó el inicio de la segunda revolución en las bases de datos cambiando
+radicalmente la tecnología para su administración.
+Las bases de datos relacionales están construidas sobre un modelo matemático formal, 
+que representa los datos y las interrelaciones entre ellos mediante la relación, 
+una estructura de datos que puede visualizarse como una tabla en términos de implementación. 
+Codd introdujo el concepto de consistencia, para referirse al estado que alcanza una base de datos cuando satisface un conjunto de restricciones, denominadas en el contexto relacional, 
+como restricciones de integridad. Las restricciones de integridad proporcionan las bases lógicas para asegurar la correctitud y veracidad de los datos durante la manipulación de los mismos.
+
+Durante la década de 1980 el \textit{American National Standards Institute} y la \textit{International Organization for Standardization} reconocieron SQL (\textit{Structured Query Language})
+como lenguaje de consulta estandar \cite{chamberlin2012early}. 
+La bases de datos relacionales se convirtieron en un éxito comercial a medida que las computadoras se abarataban y sus ventas se
+incrementaban, agrandando el potencial mercado de bases de datos. Por otro lado, esto causó un gran declive en la popularidad
+de los modelos jerárquicos y de redes.
+
+Al comienzo de los años 2000s las bases se datos relacionales parecían inamovibles en el mercado. 
+Fueron adoptadas y constituyeron durante años sino la única, la más popular alternativa para el almacenamiento de grandes volúmenes de datos. 
+Aunque hubo significativos y contribuyentes avances dentro del modelo relacional, no había signos de la ocurrencia de un gran cambio en este campo \cite{harrison2015next}.
+
+La llegada y asentamiento de la Web, la compra de computadoras personales y la creciente inversión en
+el comercio electrónico llevó a un crecimiento exponencial de la industria de bases de datos, marcando
+la era de las aplicaciones masivas web-scale \cite{harrison2015next}. A pesar de su popularidad y eficacia,
+las limitaciones del modelo relacional empazaron a tornarse un problema cada vez mayor, a medida que grandes
+compañías como Google, Facebook, Yahoo! y Amazon comenzaron a tratar con enormes volúmenes de datos y de
+usuarios. 
+
+
+El crecimiento de estas aplicaciones generó nuevos retos, como el manejo de un gran volumen de operaciones de lectura y escritura, baja latencia en los tiempos de respuesta y alta disponibilidad; requisitos muy difíciles de lograr con el solo uso de bases de datos relacionales.
+Lograr algunos de estos objetivos con bases de datos relacionales era posible en ciertos casos, pero con muchas dificultades y costos potencialmente altos \cite{strauch2011nosql}.
+Los sistemas relacionales han sido diseñados para residir en un único servidor, formar parte de arquitecturas cliente/servidor y, por ende, para escalar verticalmente (destinando mayores recursos computacionales al único servidor utilizado). 
+Esto no niega que sea posible trabajar con bases de datos relacionales distribuidas, 
+solo que ello conlleva un esfuerzo adicional, resulta una tarea ardua, engorrosa y, a veces,
+imposible para alcanzar los niveles de escalabilidad que requieren las aplicaciones mientras continúan respondiendo sin interrupción a las demandas de los usuarios.
+Los SGBD relacionales se caracterizan por el procesamiento transaccional de los datos, basados en los principios ACID \cites*{strauch2011nosql,pokorny2011nosql} que dificultan el escalamiento horizontal (agregar nodos al sistema):.
+
+\begin{itemize}
+    \item \textbf{Atomicity (A)}: Unasecuenciadeoperaciones(transacción)seejecutarádel todo o nada.
+    \item \textbf{Consistency (C)}: Una transacción no deja la base de datos en un estado inconsistente, no se viola ninguna restricción de integridad.
+    \item \textbf{Isolation (I)}: Las transacciones concurrentes son independientes, una no interfiere con otra.
+    \item \textbf{Durability (D)}: Los cambios realizados por una transacción serán reverti- dos ante fallas del sistema.
+\end{itemize}
+
+
+Para justificar la incompatibilidad entre los nuevos requerimientos de las aplicaciones web y los principios sobre los que había sido construido el
+modelo relacional que utilizaban en su implementación, en el año 2000, el profesor Eric Brewer, de la Universidad de California, Berkeley, planteó que es imposible 
+para un sistema de base de datos distribuido satisfacer simultáneamente la consistencia, la disponibilidad y la tolerancia a particiones. 
+Esta conjetura se conviertió en un teorema dos años después cuando se publica una demostración formal y pasa a conocerse en la literatura como el Teorema CAP \cite{gilbert2012perspectives}, por sus siglas en inglés \textit{Consistency}, \textit{Availability} y \textit{Partition Tolerance} (véase figura \ref{fig:cap-theorem}).
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.7\textwidth]{Images/cap-theorem.png}
+    \caption{Diagrama de Venn del Teorema CAP}
+    \label{fig:cap-theorem}
+\end{figure}
+
+
+Las soluciones para lograr el escalamiento horizontal en las aplicaciones se basan en la partición de los datos, lo que lleva a deducir que la presencia de la tolerancia a particiones en los sistemas de bases de datos es un requerimiento, más que una opción. 
+El abandono de la consistencia mejora en gran medida la disponibilidad del sistema, mientras que su elección por encima de la disponibilidad implica, bajo ciertas circunstancias, que el sistema no estará disponible \cite{vogels2008eventually}. 
+Dependiendo de las necesidades particulares de una aplicación, algunas de estas características son más importantes que otras \cite{pokorny2011nosql}.
+Esta dicotomía introduce el concepto de consistencia eventual, esto significa que el sistema aboga por la disponibilidad, por lo que las demandas de los clientes serán atendidas instantáneamente, pero los cambios no se reflejarán de igual forma a través de todo el sistema sino que se efectuarán ocasionalmente \cite{vogels2008eventually}.
+Esta variante, evidentemente no cumple con las propiedades ACID de los sistemas relacionales, sino que se incorpora a otro conjunto de principios conocidos como BASE \cites*{pokorny2011nosql,vogels2008eventually}:
+
+\begin{itemize}
+    \item \textbf{Basically Available (BA)}: Pueden existir fallas parciales en algunos nodos del sistema distribuido, pero aun así el resto del sistema continúa su función.
+    \item \textbf{Soft state (S)}: Esta expresión quiere decir que los datos serán reemplazados por datos más recientes. La base de datos no es consistente todo el tiempo. Esta propiedad se superpone a la tercera.
+    \item \textbf{Eventual consistency (E)}: La base de datos alcanzará consistencia eventualmente, puede haber instantes de tiempo que no sea consistente.
+\end{itemize}
+
+
+Con el fin de superar las limitaciones del modelo relacional surgieron las bases de datos NoSQL, que tienen como fundamento los principios BASE.
+El término ``NoSQL'' quiere decir \textit{``Not only SQL''} y se refiere a una clase de SGBDs identificados por su no adherencia al modelo relacional,
+intentando resolver los problemas de escalabilidad y disponibilidad contra los problemas de atomicidad y consistencia.
+Las bases de datos NoSQL usualmente no se construyen sobre tablas y como resultado, generalmente no utilizan SQL para la manipulación de los datos \cite{vaish2013getting}. 
+NoSQL no representa una ruptura con el modelo relacional, sino que amplía y modifica sus principios fundamentales, aunque tampoco constituye la mejor solución para todo tipo de problemas \cite{harrison2015next}.
+La llegada de este nuevo concepto marca el inicio de la tercera revolución de las bases de datos, en la que no se defiende el uso de solo una arquitectura,
+ya que una misma arquitectura de base de datos no puede resolver todos los retos a los que se enfrenta el mundo digital moderno \textit{(One Size Doesn’t Fit All)} \cite{harrison2015next}.
+ Esta etapa se caracteriza por aplicaciones desarrolladas en la nube, tecnología móvil, redes sociales e internet de las cosas.
+ Asimismo, se constata gran variabilidad en los datos que requiere flexibilidad en los modelos para tratar con datos semi-estructurados y no-estructurados y la 
+ necesidad de manejar grandes volúmenes de datos, es por ello que se considera que vivimos en la era de Big Data, un concepto que se ha convertido en una de las tendencias tecnológicas más importantes en la actualidad \cite{sagiroglu2013big}.
+
 
 \section{Grafos de conocimientos}
 
-\subsection{Teor\'ia de grafos}
+\subsection{Teor\'ia de grafos}\label{section:graph-theory}
 
 La teor\'ia de grafos se centra en el estudio de un modelo
 matem\'atico propuesto por el matem\'atico Leonhard Euler en el
-a\~no 1736 denominado grafo \cite{estrada2012structure}.
+a\~no 1736 denominado grafo \cite{bondy2008graph}.
 
 \begin{definition}
     Un \textbf{grafo} es un par formado por dos conjuntos $G = (V,E)$, 
@@ -72,26 +171,92 @@ m\'as utilizadas son la matriz de adyacencia y las listas de adyacencia.
     $\{ u \in V : \{v,u\} \in E \}$.
 \end{definition}
 
-Estas formas de representaci\'on de grafos han mostrado problemas de eficiencia
-para la implementaci\'on de m\'etodos de an\'alisis de grafos, teniendo un
-alto costo computacional y espacial. Por tanto, una de las principales l\'ineas de
-investigaci\'on dentro de esta teor\'ia se dedica a la investigaci\'on de representaciones eficientes de grafos,
-en el marco de esta l\'inea se define el problema de \textit{graph embedding} el cual se enfoca en representar
-grafos mediante vectores.
 
-\subsection{Bases de datos orientadas a grafos}
+\subsection{Sistemas de almacenamiento de grafos}
+
+En la actualidad existen dos tipos principales de sistemas de almacenamiento para grafos:
+las bases de datos orientadas a grafos y los almacenes RDF \cite{angles2008survey}. 
+La principal diferencia de estos
+sistemas es la expresividad permitida por su modelo de datos, es decir que tantas características
+de un grafo son capaces de implementar (tipado, vértices atributados, aristas atributadas, etc.)
+
+Un almacén RDF es una base de datos diseñada para almacenar, gestionar y consultar datos estructurados en formato RDF (\textit{Resource Description Framework}). 
+El modelo RDF representa la información como triplas compuestas por un sujeto, un predicado y un objeto, y fue diseñado para representar los metadatos acerca de los recursos en la \textit{World Wide Web} \cite{manola2004rdf}.
+Este formato es fundamental para la web semántica, ya que permite vincular datos de diferentes fuentes y facilitar su interpretación tanto por humanos como por máquinas. Los almacenes RDF se utilizan ampliamente en aplicaciones que requieren interoperabilidad de datos, como gestión de ontologías, motores de búsqueda semánticos, y análisis de grandes volúmenes de datos \cites*{haase2004comparison,decker2005triple,malik2016big}. 
+Su propósito principal es permitir un acceso estandarizado a datos semánticos a través de lenguajes como SPARQL \cite{perez2006semantics}.
+
+Una base de datos orientada a grafos es un sistema diseñado para almacenar, gestionar y consultar datos estructurados como grafos, donde las entidades se representan como nodos, las interrelaciones como aristas, y las propiedades asociadas se almacenan como atributos en ambos \cite{angles2008survey}. 
+Este modelo es más general que el formato RDF permitiendo representar y analizar estructuras más complejas. 
+Las bases de datos de grafos están optimizadas para consultas que implican recorridos o análisis de vecindad, como encontrar rutas más cortas, detectar comunidades o analizar patrones de conectividad \cite{neo4jgraph}. 
+Estas bases de datos no implementan un estándar y utilizan lenguajes de consulta propietarios especializados como Cypher, Gremlin o GQL \cite{neo4jcypher}. 
+Su propósito principal es ofrecer un enfoque eficiente y flexible para modelar datos interconectados, lo que las hace esenciales en sectores como logística, ciberseguridad, marketing, y análisis de redes complejas \cite{neo4jgraphuses}.
+
+Una comparación más detallada de ambas bases de datos puede ser vista en la tabla \ref{tab:graph-db-comparison-table}.
+
+    \begin{longtable}{|p{3cm}|p{5cm}|p{5cm}|}
+        \hline
+        \textbf{Aspecto} & \textbf{Bases de datos orientadas a grafos} & \textbf{Almacenes RDF} \\
+        \hline
+        \endfirsthead
+        \caption{Comparación entre bases de datos orientadas a grafos y almacenes RDF}\label{tab:graph-db-comparison-table}\\
+        
+
+        \hline
+        \textbf{Aspecto} & \textbf{Bases de datos orientadas a grafos} & \textbf{Almacenes RDF} \\
+        \hline
+        \endhead
+
+        
+        \hline
+        \multicolumn{3}{|r|}{\textit{Continúa en la siguiente página}} \\
+        \hline
+        \endfoot
+        
+        \hline
+        \endlastfoot
+
+        
+        Modelo de datos & Nodos (entidades), aristas (relaciones) y propiedades. & Tripletas: sujeto, predicado y objeto. Basado en el modelo RDF. \\
+        \hline
+        Lenguaje de consulta & Cypher, Gremlin, GQL. & SPARQL (estándar de W3C). \\
+        \hline
+        Flexibilidad del esquema & Esquema flexible, adaptado a datos dinámicos. & Esquema estructurado basado en RDF. \\
+        \hline
+        Optimización & Diseñadas para consultas rápidas en grafos y análisis de relaciones. & Optimizadas para razonamiento semántico y consultas basadas en tripletas. \\
+        \hline
+        Propósito principal & Modelado de relaciones complejas y análisis de grafos. & Interoperabilidad y razonamiento sobre datos semánticos. \\
+        \hline
+        Estándares & No dependen de un estándar universal, varía según el proveedor. & Cumplen con los estándares de W3C (RDF, OWL, SPARQL). \\
+        \hline
+        Casos de uso & Redes sociales, motores de recomendación, análisis de redes. & Web semántica, gestión de ontologías, datos enlazados. \\
+        \hline
+        Ejemplos & Neo4j, TigerGraph, ArangoDB. & Apache Jena, Stardog, AllegroGraph. \\
+        \hline
+    
+        \end{longtable}
+
 
 
 \section{Productos naturales y química computacional}
 
-Los productos naturales son sustancias producidas por organismos en condiciones naturales, las cuales no han sido modificadas de forma significativa por los humanos. La composición de los productos naturales puede incluir un amplio rango de compuestos, constituyendo una reserva de diversidad química prometedora a explorar en búsqueda de sustancias con aplicaciones industriales. Actualmente son muy utilizados en diferentes industrias como la farmacéutica, cosmética y agrícola debido a la creciente demanda de opciones más saludables y sostenibles. Esto ha motivado al incremento de la investigación con respecto a la química de productos naturales  (Les et al., 2024)
+Los productos naturales son sustancias producidas por organismos en condiciones naturales, las cuales no han sido modificadas de forma significativa por los humanos. 
+La composición de los productos naturales puede incluir un amplio rango de compuestos, constituyendo una reserva de diversidad química prometedora a explorar en búsqueda de sustancias con aplicaciones industriales. 
+Actualmente son muy utilizados en diferentes industrias como la farmacéutica, cosmética y agrícola debido a la creciente demanda de opciones más saludables y sostenibles. 
+Esto ha motivado al incremento de la investigación con respecto a la química de productos naturales.
 
-En la actualidad la investigación en química se ha convertido cada vez más en un área multidisciplinaria. Los avances en bases de datos químicas, inteligencia artificial, visualización y análisis de datos han acelerado el desarrollo de la química computacional, la computación tiene un rol creciente dentro de la investigación química (Wigh et al., 2022). Por tanto, se vuelve necesario el conocer las formas de representar y buscar computacionalmente un producto natural, así como las herramientas computacionales utilizadas para esto.
+En la actualidad la investigación en química se ha convertido cada vez más en un área multidisciplinaria. 
+Los avances en bases de datos químicas, inteligencia artificial, visualización y análisis de datos han acelerado el desarrollo de la química computacional, 
+la computación tiene un rol creciente dentro de la investigación química. 
+Por tanto, se vuelve necesario el conocer las formas de representar y buscar computacionalmente un producto natural, 
+así como las herramientas computacionales utilizadas para esto.
 
 \subsection{Representación computacional de productos naturales}
 
-
-Las estructuras químicas son usualmente representadas como grafos moleculares, como fue mencionado en la sección 1.x.x un grafo es una estructura compuesta por un conjunto de vértices conectados por aristas. En un grafo molecular los átomos y enlaces son representados por los vértices y las aristas respectivamente, además pueden incluir información adicional como el número atómico asociado a cada vértice y el orden del enlace en cada arista. El almacenar estas propiedades le permite al grafo representar la estructura de la molécula, es decir, la forma en que los átomos (vértices) están conectados (Leach Gillet, 2007).  
+Las estructuras químicas son usualmente representadas como grafos moleculares, 
+como fue mencionado en la sección \ref{section:graph-theory} un grafo es una estructura compuesta por un conjunto de vértices conectados por aristas. 
+En un grafo molecular los átomos y enlaces son representados por los vértices y las aristas respectivamente, 
+además pueden incluir información adicional como el número atómico asociado a cada vértice y el orden del enlace en cada arista. 
+El almacenar estas propiedades le permite al grafo representar la estructura de la molécula, es decir, la forma en que los átomos (vértices) están conectados \cite{leach2007introduction}.  
 
 \begin{figure}[h!]
     \centering
@@ -101,17 +266,21 @@ Las estructuras químicas son usualmente representadas como grafos moleculares, 
 \end{figure}
 
 
-Una vez representada la molécula como un grafo molecular se debe codificar este grafo en un formato entendible por la computadora. Los dos métodos más utilizados en química computacional para dicho propósito son la tabla de conexión y la notación linear. Los formatos basados en tablas de conexión usualmente codifican el grafo en dos secciones: la primera sección contiene las propiedades de los átomos y la segunda sección es una tabla de adyacencia entre los vértices la cual representa los enlaces moleculares. Estos formatos permiten almacenar una mayor cantidad de información, incluyendo propiedades atómicas, de enlaces y coordenadas de posición para la visualización 2D y 3D de la molécula. Por otro lado, los formatos basados en notación lineal utilizan caracteres alfanuméricos para codificar la estructura, siendo una representación más compacta de la tabla de conexión, permitiendo el almacenamiento y transmisión de un mayor número de moléculas (Leach Gillet, 2007) (Heller et al., 2015). A continuación, se presentan algunos de los formatos más utilizados para la representación computacional de productos naturales.
+Una vez representada la molécula como un grafo molecular se debe codificar este grafo en un formato entendible por la computadora. 
+Los dos métodos más utilizados en química computacional para dicho propósito son la tabla de conexión y la notación linear. 
+Los formatos basados en tablas de conexión usualmente codifican el grafo en dos secciones: la primera sección contiene las propiedades de los átomos y la segunda sección es una tabla de adyacencia entre los vértices la cual representa los enlaces moleculares. 
+Estos formatos permiten almacenar una mayor cantidad de información, incluyendo propiedades atómicas, de enlaces y coordenadas de posición para la visualización 2D y 3D de la molécula. 
+Por otro lado, los formatos basados en notación lineal utilizan caracteres alfanuméricos para codificar la estructura, siendo una representación más compacta de la tabla de conexión, permitiendo el almacenamiento y transmisión de un mayor número de moléculas \cites*{leach2007introduction,heller2015inchi}. A continuación, se presentan algunos de los formatos más utilizados para la representación computacional de productos naturales.
 
 \begin{itemize}
-  \item  MDL Molfile es un formato desarrollado por Molecular Design Limited (MDL) (Dalby et al., 1992) el cual utiliza una tabla de conexión para representar la estructura de la molécula. Este formato, particularmente sus versiones V2000 y V3000, es ampliamente utilizado en bases de datos químicas y softwares de visualización molecular debido a su forma estructurada y sencilla de codificar estructuras moleculares en 2D y 3D.
-  \item International Chemical Identifier (InChI) (Heller et al., 2015) es un identificador para sustancias químicas en notación lineal desarrollado bajo el auspicio de la International Union of Pure and Applied Chemistry (IUPAC) y el National Institute of Standards and Technology (NIST) bajo una licencia de código abierto. Este expresa las estructuras químicas en términos de conectividad, equilibrio tautomérico, isótopos, estereoquímica y carga electrónica para producir una cadena única para cada molécula. En la actualidad este identificador es ampliamente utilizado para la integración de distintas piezas de información química, especialmente en servicios orientados a la web.
-  \item InChI Key (Heller et al., 2015) es una versión de 25 caracteres del InChI de una determinada molécula, diseñado para facilitar la búsqueda de compuestos químicos a través de la web. Este identificador es obtenido a través del hashing de una cadena InChI original, lo cual, hoy en día en ciertos casos, puede provocar colisiones de un mismo InChI Key a distintos InChIs. Además, siendo el hash una función de un solo sentido es imposible reconstruir el InChI original y por tanto recuperar la estructura de la molécula a partir del InChI Key.
-  \item Canonical Simplified Molecular Input Line Entry Specification (Canonical SMILES) (Weininger, 1988) es un identificador para sustancias químicas en notación lineal en el cual los átomos y enlaces son representados por símbolos siguiendo reglas establecidas. Para construir un SMILES es necesario recorrer el grafo molecular de forma que cada átomo sea visitado una y solo una vez. Debido a que puede haber múltiples recorridos posibles es necesario generar una representación canónica de la molécula, esto es un orden único de los átomos para un determinado grafo molecular.
-  \item Las huellas moleculares son representaciones numéricas de estructuras moleculares codificadas como vectores binarios de longitud fija. Cada bit de una huella molecular representa la presencia de un átomo o sub-estructura específica dentro del compuesto (Cereto-Massagué et al., 2015). 
+  \item \textbf{MDL Molfile}: es un formato desarrollado por Molecular Design Limited (MDL) \cite{dalby1992description} el cual utiliza una tabla de conexión para representar la estructura de la molécula. Este formato, particularmente sus versiones V2000 y V3000, es ampliamente utilizado en bases de datos químicas y softwares de visualización molecular debido a su forma estructurada y sencilla de codificar estructuras moleculares en 2D y 3D.
+  \item \textbf{International Chemical Identifier} (InChI) \cite{heller2015inchi} es un identificador para sustancias químicas en notación lineal desarrollado bajo el auspicio de la International Union of Pure and Applied Chemistry (IUPAC) y el National Institute of Standards and Technology (NIST) bajo una licencia de código abierto. Este expresa las estructuras químicas en términos de conectividad, equilibrio tautomérico, isótopos, estereoquímica y carga electrónica para producir una cadena única para cada molécula. En la actualidad este identificador es ampliamente utilizado para la integración de distintas piezas de información química, especialmente en servicios orientados a la web.
+  \item \textbf{InChI Key} \cite{heller2015inchi} es una versión de 25 caracteres del InChI de una determinada molécula, diseñado para facilitar la búsqueda de compuestos químicos a través de la web. Este identificador es obtenido a través del hashing de una cadena InChI original, lo cual, hoy en día en ciertos casos, puede provocar colisiones de un mismo InChI Key a distintos InChIs. Además, siendo el hash una función de un solo sentido es imposible reconstruir el InChI original y por tanto recuperar la estructura de la molécula a partir del InChI Key.
+  \item \textbf{Canonical Simplified Molecular Input Line Entry Specification} (Canonical SMILES) \cite{weininger1988smiles}  es un identificador para sustancias químicas en notación lineal en el cual los átomos y enlaces son representados por símbolos siguiendo reglas establecidas. Para construir un SMILES es necesario recorrer el grafo molecular de forma que cada átomo sea visitado una y solo una vez. Debido a que puede haber múltiples recorridos posibles es necesario generar una representación canónica de la molécula, esto es un orden único de los átomos para un determinado grafo molecular.
+  \item Las \textbf{huellas moleculares} son representaciones numéricas de estructuras moleculares codificadas como vectores binarios de longitud fija. Cada bit de una huella molecular representa la presencia de un átomo o sub-estructura específica dentro del compuesto \cite{cereto2015molecular}. 
     \begin{itemize}
-        \item MACCS Keys es una huella de 166 bits asociados a la presencia de 166 estructuras definidas en una lista de subestructuras y patrones.
-        \item Morgan Fingerprint o Extended Connectivity Fingerprint (ECFP) es un vector binario el cual es obtenido utilizando una función de hash sobre las características topológicas de los átomos y sus enlaces en un radio determinado (Rogers  Hahn, 2010).
+        \item \textbf{MACCS Keys} es una huella de 166 bits asociados a la presencia de 166 estructuras definidas en una lista de subestructuras y patrones.
+        \item \textbf{Morgan Fingerprint} o \textbf{Extended Connectivity Fingerprint} (ECFP) es un vector binario el cual es obtenido utilizando una función de hash sobre las características topológicas de los átomos y sus enlaces en un radio determinado \cite{rogers2010extended}.
     \end{itemize}
 \end{itemize}
 
@@ -123,14 +292,121 @@ Una vez representada la molécula como un grafo molecular se debe codificar este
 Las bases de datos utilizadas para almacenar y buscar la información de las estructuras químicas han tendido hacia la especialización, debido a la naturaleza de los métodos utilizados para representar y manipular las estructuras químicas de forma computacional. Dicha especialización ha llevado a dividir la funcionalidad de búsqueda de moléculas en tres categorías de acuerdo con los objetivos y restricciones de la búsqueda.
 
 \begin{itemize}
-    \item La búsqueda exacta de estructura es la tarea más sencilla requiriendo recuperar la información correspondiente con una estructura determinada. La utilización de identificadores de estructuras moleculares como el InChI, SMILES o hashes de estos permite la utilización de estructuras de datos como los índices para obtener de forma eficiente la localización en memoria de la información asociada a la molécula (Leach Gillet, 2007). 
-    \item La búsqueda de subestructura es quizás la forma más utilizada para identificar compuestos de interés. Esta búsqueda recupera todas las moléculas en la base de datos que contienen una subestructura determinada. Este problema es equivalente a determinar si un grafo está contenido dentro de otro (isomorfismo de subgrafo), por tanto, métodos de teoría de grafos pueden ser utilizados para realizar esta búsqueda. Existen algoritmos eficientes bien establecidos para buscar isomorfismos de subgrafos, sin embargo, para grandes bases de datos de compuestos químicos es demasiado costoso el utilizar solamente estos algoritmos. Por dicho motivo, la mayoría de las bases de datos realizan la búsqueda en dos etapas: durante la primera se utilizan heurísticas para rápidamente descartar moléculas sin posibilidad de satisfacer la consulta del usuario, las estructuras restantes son analizadas con los algoritmos de grafo durante la segunda fase para obtener el resultado de la consulta (Willett, 2005). 
-    \item La búsqueda de similaridad se basa en la utilización de métricas de similitud para comparar moléculas. En general estas métricas intentan estimar la similitud estructural entre un par de moléculas, debido a esto las moléculas son representadas utilizando huellas moleculares que indican las subestructuras presentes dentro de estas. La medida de similitud más utilizada para comparar estructuras representadas por huellas moleculares es el Coeficiente de Tanimoto (Bajusz et al., 2015). Estas medidas son utilizadas para buscar compuestos con similares actividades biológicas bajo la premisa de “estructuras similares tienen similar actividad biológica”, sin embargo, esta premisa no siempre es verdadera.
+    \item La \textbf{búsqueda exacta de estructura} es la tarea más sencilla requiriendo recuperar la información correspondiente con una estructura determinada. La utilización de identificadores de estructuras moleculares como el InChI, SMILES o hashes de estos permite la utilización de estructuras de datos como los índices para obtener de forma eficiente la localización en memoria de la información asociada a la molécula \cite{leach2007introduction}. 
+    \item La \textbf{búsqueda de subestructura} es quizás la forma más utilizada para identificar compuestos de interés. Esta búsqueda recupera todas las moléculas en la base de datos que contienen una subestructura determinada. Este problema es equivalente a determinar si un grafo está contenido dentro de otro (isomorfismo de subgrafo), por tanto, métodos de teoría de grafos pueden ser utilizados para realizar esta búsqueda. Existen algoritmos eficientes bien establecidos para buscar isomorfismos de subgrafos, sin embargo, para grandes bases de datos de compuestos químicos es demasiado costoso el utilizar solamente estos algoritmos. Por dicho motivo, la mayoría de las bases de datos realizan la búsqueda en dos etapas: durante la primera se utilizan heurísticas para rápidamente descartar moléculas sin posibilidad de satisfacer la consulta del usuario, las estructuras restantes son analizadas con los algoritmos de grafo durante la segunda fase para obtener el resultado de la consulta \cite{willett2005searching}. 
+    \item La \textbf{búsqueda de similaridad} se basa en la utilización de métricas de similitud para comparar moléculas. En general estas métricas intentan estimar la similitud estructural entre un par de moléculas, debido a esto las moléculas son representadas utilizando huellas moleculares que indican las subestructuras presentes dentro de estas. La medida de similitud más utilizada para comparar estructuras representadas por huellas moleculares es el Coeficiente de Tanimoto \cite{bajusz2015tanimoto}. Estas medidas son utilizadas para buscar compuestos con similares actividades biológicas bajo la premisa de “estructuras similares tienen similar actividad biológica”, sin embargo, esta premisa no siempre es verdadera.
 \end{itemize}
 
 
 
 \subsection{Herramientas de química computacional para el desarrollo de software}
+
+Debido a la existencia de múltiples representaciones para productos naturales se necesita de herramientas capaces de poder convertir estos formatos entre sí, además de poder realizar el cálculo de propiedades a partir de la estructura e incorporar los algoritmos utilizados para la búsqueda de compuestos. Esto ha llevado al surgimiento de distintos paquetes de software especializados para lo química computacional, sin los cuales el trabajo con estructuras se vuelve altamente complicado. A continuación, se presenta una lista de los paquetes más relevantes.
+
+\begin{longtable}{|p{4cm}|p{3cm}|p{3cm}|p{3cm}|}
+    \hline
+    \textbf{Característica} & \textbf{Open Babel} & \textbf{RDKit} & \textbf{Indigo} \\
+    \hline
+    \endfirsthead
+    
+    \hline
+    \textbf{Característica} & \textbf{Open Babel} & \textbf{RDKit} & \textbf{Indigo} \\
+    \hline
+    \endhead
+    
+    \hline
+    \multicolumn{4}{|r|}{\textit{Continúa en la siguiente página}} \\
+    \endfoot
+    
+    \hline
+    \endlastfoot
+    
+    Licencia & GPL-2 Licence & BSD-3 Licence & Apache License version 2.0 \\
+    \hline
+    Conversión de estructuras & Sí & Sí & Sí \\
+    \hline
+    Cálculo de huellas moleculares & Sí & Sí & Sí \\
+    \hline
+    Cálculo de medidas de similaridad & Sí & Sí & Sí \\
+    \hline
+    Búsqueda de subestructuras & Sí & Sí & Sí \\
+    \hline
+    Visualización de estructuras & Sí & Sí & Sí \\
+    \hline
+    Lenguajes soportados & C++ & Python, Java, C\# y JavaScript & .NET, Java, Python, R y WebAssembly \\
+    \hline
+    Bases de datos soportadas & - & PostgreSQL & Oracle, Microsoft SQL Server y PostgreSQL \\
+    \hline
+    
+    \end{longtable}
+
+\subsection{Bases de datos de productos naturales}
+ 
+
+    En las últimas décadas, se ha observado un creciente impulso en el desarrollo de una gran variedad de bases de datos relacionadas con productos naturales, con el propósito
+    de facilitar el desarrollo de fármacos. Un meticuloso estudio realizado por Sorokina y Steinbeck \cite{sorokina2020review} identificó más de 120 bases de datos
+    desarrolladas entre los años 2000 y 2019, de las cuales solo 50 incluyen estructuras moleculares. La obra de Sokorina y Steinbeck derivó en el desarrollo de COCONUT, 
+    el más grande repositorio de productos naturales de acceso abierto \cite{sorokina2021coconut}. 
+
+    Las bases de datos existentes en América Latina fueron recopiladas e integradas en el trabajo de Gómez-García y Medina-Franco \cite{gomez2022progress,gomez2023navigating} culminando
+    en la publicación de la \textit{Latin American Natural Product Database} (LANaPDB), que incluye 10 bases de datos de 7 países distintos. Estos conjuntos de datos
+    se crearon a partir de la extracción de datos de la literatura científica y el registro de los resultados de rondas de experimentación.
+
+
+    \begin{longtable}{|p{3.5cm}|p{2cm}|p{2cm}|p{3.5cm}|p{2cm}|}
+
+        \hline
+        \textbf{Base de Datos} & \textbf{País}  &  \textbf{Total} & \textbf{Fuente}  & \textbf{Refs}\\ 
+
+        \hline
+        \endfirsthead
+        
+        \hline
+        \textbf{Base de Datos} & \textbf{País} & \textbf{Total} & \textbf{Fuente} & \textbf{Refs}\\ 
+
+        \hline
+        \endhead
+        
+        \hline
+        \multicolumn{5}{|r|}{\textit{Continúa en la siguiente página}} \\
+        \hline
+        \endfoot
+        
+        \hline
+        \endlastfoot
+        % \hline
+        NaturAr & Argentina & 1200 & Plantas, microorganismos, animales terrestres y marinos & \cite{martinez2024naturar} \\ 
+        \hline
+        % \textbf{Base de Datos} & \textbf{Número de compuestos} & \textbf{Fuente} & \textbf{Descripción general} & \textbf{Referencias}\\ 
+        NuBBEDB & Brasil & 2223 & Plantas, microorganismos, animales terrestres y marinos & \cite{valli2013development}, \cite{pilon2017nubbedb} \\ 
+        \hline
+        SistematX & Brasil  & 9514 & Plantas & \cite{scotti2018sistematx}, \cite{costa2021sistematx} \\ 
+        \hline
+        UEFS & Brasil &  503 & Plantas &  \cite{uefsnp} \\ 
+        \hline
+        NPDB EjeCol & Colombia & 236 & Plantas, alimentos derivados de plantas &  \cite{rodriguez2024npdbejecol} \\ 
+        \hline
+        NAPRORE-CR & Costa Rica & 1600 & Plantas, microorganismos & *\\ 
+        \hline
+        LAIPNUDELSAV & El Salvador & 214 & Plantas &  * \\ 
+        \hline
+        UNIIQUIM & México & 1112 & Plantas & \cite{uniiquim} \\ 
+        \hline
+        BIOFACQUIM & México & 750 & Plantas, hongos, propóleo, animales marinos & \cite{pilon2019biofacquim}, \cite{sanchez2020functional} \\ 
+        \hline
+        CIFPMA & Panamá & 363 & Plantas & \cite{olmedo2017cheminformatic}, \cite{olmedo2019chemoinformatic} \\ 
+        \hline
+        PeruNPDB & Perú & 280 & Animales, plantas & \cite{barazorda2023perunpdb} \\ 
+        \hline
+    \end{longtable}
+
+
+    \begin{figure}[h!]
+        \centering
+        \includegraphics[width=0.5\textwidth]{Images/npdb-map.png}
+        \caption{Representación de un grafo molecular de la estructura química de la aspirina (acído acetil salicílico)}
+        \label{fig:np-graph-representation}
+    \end{figure}
 
 
 \section{Integraci\'on de datos}
@@ -574,19 +850,30 @@ la arquitectura utilizada por Zaloni \cite{sharma2018architecting} se compone de
 \end{figure}
 
 
-
-\paragraph{Logical data warehouse\newline}
-
-
 \paragraph{Data lakehouse\newline}
 
-Lakehouse: A New Generation of Open Platforms that Unify Data Warehousing and Advanced Analytics
+El \textit{data lakehouse} surge como solución a las limitaciones del \textit{data warehouse} y el \textit{data lake}, 
+Ambrust et al. (2021) \cite{armbrust2021lakehouse} lo definió como
+\textit{`` 
+un sistema de gestión de datos basado en un almacenamiento de bajo coste y directamente accesible, 
+que también proporciona las funcionalidades y rendimiento de SGBD analíticos, 
+como transacciones ACID, versionado de datos, auditoría, indexación, almacenamiento en caché y optimización de consultas. 
+De este modo, se combinan las principales ventajas de los data lakes y data warehouses: 
+el almacenamiento de bajo coste en un formato abierto accesible por diversos sistemas del primero, y las potentes funciones de gestión y optimización del segundo.
+''}
 
-Definimos un Lakehouse como un sistema de gestión de datos basado en un almacenamiento de bajo coste y directamente accesible que también proporciona funciones tradicionales de gestión y rendimiento de DBMS analíticos, como transacciones ACID, versionado de datos, auditoría, indexación, almacenamiento en caché y optimización de consultas. De este modo, los almacenes de datos combinan las principales ventajas de los lagos de datos y los almacenes de datos: el almacenamiento de bajo coste en un formato abierto accesible por diversos sistemas del primero, y las potentes funciones de gestión y optimización del segundo.
+La arquitectura de un data lakehouse (véase figura \ref{fig:dlh-architecture}) se compone de:
 
-La primera idea clave que proponemos para implementar Lakehouse es que el sistema almacene los datos en un almacén de objetos de bajo coste (por ejemplo, Amazon S3) utilizando un formato de archivo estándar como Apache Parquet, pero implementando una capa de metadatos transaccional sobre el almacén de objetos que defina qué objetos forman parte de una versión de tabla. Esto permite al sistema implementar características de gestión como las transacciones ACID o el versionado dentro de la capa de metadatos, al tiempo que mantiene el grueso de los datos en el almacén de objetos de bajo coste y permite a los clientes leer directamente objetos de este almacén utilizando un formato de archivo estándar en la mayoría de los casos. Varios sistemas recientes, como Delta Lake [10] y Apache Iceberg [7], han añadido con éxito funciones de gestión a los lagos de datos de esta manera; por ejemplo, Delta Lake se utiliza ahora en aproximadamente la mitad de la carga de trabajo de Databricks, por miles de clientes. Aunque una capa de metadatos añade capacidades de gestión, no es suficiente para lograr un buen rendimiento de SQL. Los almacenes de datos utilizan varias técnicas para obtener un rendimiento de vanguardia, como el almacenamiento de datos calientes en dispositivos rápidos como los SSD, el mantenimiento de estadísticas, la creación de métodos de acceso eficientes como los índices, y la cooptimización del formato de datos y el motor de cálculo. En un Lakehouse basado en formatos de almacenamiento existentes, no es posible cambiar el formato, pero demostramos que es posible implementar otras optimizaciones que dejen los archivos de datos sin cambios, incluyendo el almacenamiento en caché, estructuras de datos auxiliares como índices y estadísticas,
-
-el desarrollo de APIs declarativas de DataFrame [11, 37]. Muchas bibliotecas de ML, como TensorFlow y Spark MLlib, ya pueden leer formatos de archivo de lago de datos como Parquet [30, 37, 42]. Por lo tanto, la forma más sencilla de integrarlas con un Lakehouse sería consultar la capa de metadatos para averiguar qué archivos Parquet forman parte actualmente de una tabla, y simplemente pasarlos a la biblioteca ML. Sin embargo, la mayoría de estos sistemas soportan una API DataFrame para la preparación de datos que crea más oportunidades de optimización. Los DataFrames fueron popularizados por R y Pandas [40] y simplemente ofrecen a los usuarios una abstracción de tablas con varios operadores de transformación, la mayoría de los cuales se corresponden con el álgebra relacional. Sistemas como Spark SQL han convertido esta API en declarativa evaluando perezosamente las transformaciones y pasando el plan de operadores resultante a un optimizador [11]. De este modo, estas API pueden aprovechar las nuevas características de optimización de Lakehouse, como las cachés y los datos auxiliares, para acelerar aún más el ML. La figura 2 muestra cómo encajan estas ideas en un Lakeho
+\begin{itemize}
+    \item \textbf{Data lake}: almacena los datos en un almacén de objetos de bajo coste utilizando un formato de archivo estándar.
+    \item \textbf{Capa de metadatos transaccional}: se implementa sobre el almacén de objetos para definir qué objetos forman parte de una versión de una tabla. 
+    Esto permite al sistema implementar funcionalidades como las transacciones ACID o el versionado dentro de la capa de metadatos, 
+    al tiempo que mantiene el grueso de los datos en un almacenamiento de bajo coste y permite a los clientes leer directamente objetos de este almacén utilizando un formato de archivo estándar en la mayoría de los casos.
+    \item \textbf{Catálogo de datos}: define las tablas virtuales que son percibidas por los usuarios.
+    \item \textbf{SQL APIs}: el desarrollo de APIs basadas en el estandar de SQL permite la comunicación con la capa de metadatos transaccional.
+    \item \textbf{Dataframe APIs}: Las APIs declarativas de DataFrame se implementan  
+    para optimizar el rendimiento de las bibliotecas de aprendizaje de máquinas como TensorFlow \cite{tensorflow2015-whitepaper}.
+\end{itemize}
 
 \begin{figure}[h!]
     \centering
@@ -596,10 +883,99 @@ el desarrollo de APIs declarativas de DataFrame [11, 37]. Muchas bibliotecas de 
 \end{figure}
 
 
+
+
+\begin{longtable}{|p{3cm}|p{4cm}|p{4cm}|p{4cm}|}
+    \hline
+    \textbf{Criterio}         & \textbf{Data warehouse}                                   & \textbf{Data lake}                                                       & \textbf{Data lakehouse}                                                  \\ \hline
+    \endfirsthead
+    \hline
+    \textbf{Criterio}         & \textbf{Data warehouse}                                   & \textbf{Data lake}                                                       & \textbf{Data lakehouse}                                                  \\ \hline
+    \endhead
+    \hline
+    \multicolumn{4}{|r|}{Continúa en la siguiente página...} \\ \hline
+    \endfoot
+    \hline
+    \endlastfoot
+    \textbf{Enfoque clave}    & Análisis de datos e inteligencia empresarial                & Exploración de datos, análisis de grandes datos y fuente única de verdad para diversos tipos de datos (e.g., registros, documentos, multimedia) & Combina análisis de datos estructurados con gestión transaccional            \\ \hline
+    \textbf{Tipo de datos}    & Estructurados                                               & Estructurados, semi-estructurados y no estructurados                         & Estructurados, semi-estructurados y no estructurados                         \\ \hline
+    \textbf{Costo de almacenamiento}            & Costoso y lento                                             & Económico, rápido y adaptable                                                & Económico, rápido y adaptable                                                \\ \hline
+    \textbf{Estructura}       & No configurable                                             & Personalizable                                                               & Personalizable                                                               \\ \hline
+    \textbf{Esquema}          & Definido antes de almacenar los datos (esquema en escritura) & Desarrollado después de almacenar los datos (esquema en lectura)             & Desarrollado después de almacenar los datos (esquema en lectura)             \\ \hline
+    \textbf{Cumplimiento de esquema} & Estricto                                              & Flexible                                                                     & Flexible                                                                     \\ \hline
+    \textbf{Usabilidad}       & Los usuarios pueden acceder y reportar datos fácilmente     & Complejo analizar grandes volúmenes de datos sin herramientas de clasificación y catalogación & Combina la estructura y simplicidad del almacén de datos con los casos de uso más amplios del lago de datos \\ \hline
+    \textbf{Conformidad ACID} & Garantiza altos niveles de integridad, los datos se registran de manera compatible con ACID & No cumple con ACID, las actualizaciones y eliminaciones son procedimientos complejos & Compatible con ACID para garantizar consistencia en operaciones concurrentes de lectura/escritura \\ \hline
+    \textbf{Calidad}          & Alta                                                        & Riesgo de baja calidad (pantanos de datos) si no se gestiona correctamente   & Alta                                                                         \\ \hline
+    \textbf{Gobernanza de datos} & Funciones integradas para calidad e integridad de datos   & Requiere herramientas adicionales para una gobernanza efectiva              & Enfoque híbrido, aprovecha las características del almacén de datos para una mejor gobernanza \\ \hline
+    \textbf{Escalabilidad}    & Escalado vertical                                           & Escalado horizontal                                                          & Escalado horizontal                                                          \\ \hline
+    \end{longtable}
+
+
+
 \subsubsection{Arquitecturas de integración de datos virtual}
 
 
+\paragraph{Logical data warehouse\newline}
 
+
+El \textit{logical data warehouse} (LDW)
+es una arquitectura en la que se implementa una capa de virtualización de datos
+encima de sistemas de integración de datos o fuentes primarias de datos. Esto
+permite tanto el acceso a datos reconciliados como datos en tiempo real haciendo que
+estas fuentes se presenten al usuario como una única fuente de datos. Esto permite 
+consultar tanto las fuentes de datos convencionales (como bases de datos, almacenes de datos empresariales, lagos de datos, etc.) 
+como otras fuentes de datos (como aplicaciones, archivos de big data, servicios web y la nube) para satisfacer cualquier caso de uso analítico.
+
+Un LDW no almacena datos físicamente, sino que contiene metadatos que definen el contexto de los datos, lo que permite a los consumidores de datos encontrar y acceder a una pieza específica de datos sin necesidad de saber dónde está almacenada.
+Esto permite no utilizar procesos ETL o ELT físicos, es decir no se copian o mueven los datos a un almacenamiento
+centralizado. En este caso se utilizan los mapeos semánticos entre un esquema mediador global y los esquemas de las fuentes
+de datos para reformular las consultas del usuario y distribuirlas a las distintas fuentes.
+
+La arquitectura básica de un data warehouse lógico se compone de los siguientes componentes:
+
+\begin{itemize}
+    \item Capa de metadatos: Incluye el El esquema mediado se construye para la aplicación de integración de datos y contiene únicamente los aspectos del dominio que son relevantes para la aplicación. La clave para construir una aplicación de integración de datos son las descripciones de las fuentes, el vínculo que conecta el esquema mediado con los esquemas de las fuentes. Estas descripciones especifican las propiedades de las fuentes que el sistema necesita conocer para poder utilizar sus datos. El componente principal de las descripciones de las fuentes son los mapeos semánticos, que relacionan los esquemas de las fuentes de datos con el esquema mediado. Los mapeos semánticos especifican cómo los atributos de las fuentes corresponden a los atributos del esquema mediado (cuando existen tales correspondencias) y cómo se resuelven las diferentes agrupaciones de atributos en tablas.
+    \item Reformulador de consultas: Por lo tanto, el primer paso que debe realizar el sistema es reformular la consulta en consultas que se refieran a los esquemas de las fuentes de datos. Para ello, el sistema utiliza las descripciones de las fuentes. El resultado de la reformulación es un conjunto de consultas que hacen referencia a los esquemas de las fuentes de datos y cuya combinación producirá la respuesta a la consulta original.
+    \item Optimizador de consultas:  La optimización de consultas toma como entrada un plan de consulta lógico y produce un plan de consulta física, que especifica el orden exacto en que se acceden a las fuentes de datos, cuándo se combinan los resultados, qué algoritmos se utilizan para realizar operaciones sobre los datos (por ejemplo, uniones entre fuentes) y la cantidad de recursos asignados a cada operación.
+    \item Motor de ejecución: el motor de ejecución es responsable de la ejecución real del plan de consulta física. El motor de ejecución envía las consultas a las fuentes individuales a través de los envoltorios (wrappers) y combina los resultados según lo especificado por el plan de consulta.
+    \item Decoradores: su función es extraer los metadatos, enviar consultas a una fuente de datos, recibir las respuestas,
+    
+\end{itemize}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=0.5\textwidth]{Images/ldw-architecture.png}
+    \caption{Arquitectura de un \textit{logical data warehouse}}
+    \label{fig:ldw-architecture}
+\end{figure}
+
+\subsubsection{Integración física vs. integración virtual}
+
+\begin{longtable}{|p{3cm}|p{4.5cm}|p{4.5cm}|}
+    \hline
+    \textbf{Aspecto} & \textbf{Integración de Datos Física} & \textbf{Integración de Datos Virtual} \\
+    \hline
+    Definición & Copia y consolida los datos desde múltiples fuentes en un único repositorio central (p. ej., un almacén de datos). & Proporciona acceso a los datos en múltiples fuentes sin moverlos físicamente, utilizando una capa lógica. \\
+    \hline
+    Almacenamiento & Los datos se almacenan físicamente en un repositorio común (almacén de datos o data lake). & Los datos permanecen en sus fuentes originales; no se duplican ni consolidan físicamente. \\
+    \hline
+    Rendimiento & Alto rendimiento para consultas complejas debido a la pre-optimización de datos. & El rendimiento depende de la capacidad de las fuentes y la eficiencia de las consultas distribuidas. \\
+    \hline
+    Tiempo de implementación & Requiere tiempo considerable para la extracción, transformación y carga (ETL/ELT) de los datos. & Implementación más rápida, ya que no es necesario mover ni transformar los datos previamente. \\
+    \hline
+    Actualización de datos & Los datos no están en tiempo real; las actualizaciones dependen de la frecuencia de los procesos ETL/ELT. & Los datos están siempre en tiempo real, ya que se accede directamente a las fuentes originales. \\
+    \hline
+    Escalabilidad & Requiere aumentar el almacenamiento y la capacidad de procesamiento a medida que crecen los datos. & Más escalable, ya que aprovecha el almacenamiento y procesamiento de las fuentes individuales. \\
+    \hline
+    Complejidad de mantenimiento & Complejo; requiere mantenimiento de ETL/ELT, además de la gestión del repositorio central. & Más simple, ya que no se duplican los datos, pero puede ser complicado manejar múltiples fuentes heterogéneas. \\
+    \hline
+    Consistencia de datos & Alta consistencia si los procesos ETL/ELT están bien diseñados. & Puede haber problemas de consistencia debido a diferencias entre las fuentes en tiempo real. \\
+    \hline
+    Casos de uso & Ideal para análisis históricos, minería de datos, y reportes empresariales en grandes organizaciones. & Adecuado para consultas en tiempo real y aplicaciones que necesitan acceso inmediato a datos actualizados. \\
+    \hline
+    Costo inicial & Alto, debido al almacenamiento físico y la implementación de procesos ETL/ELT. & Menor costo inicial, pero requiere inversión en herramientas de virtualización y gestión de consultas. \\
+    \hline
+    \end{longtable}
 
 
 
